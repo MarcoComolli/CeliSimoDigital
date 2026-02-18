@@ -2,8 +2,8 @@
 
   <div class="name-instructions">Ciao! Come prima cosa, inserisci il tuo nome:</div>
   <div class="input-name-form-container">
-    <input class="name-input" type="text" name="name-input">
-    <button class="submit-name" (click)="onNameSubmit()">Invia</button>
+    <input class="name-input" type="text" name="name-input"  [(ngModel)]="username" (input)="username = username.toLowerCase()">
+    <button class="submit-name"(click)="onNameSubmit()">Invia</button>
   </div>
 </main>
 <!-- <router-outlet /> -->

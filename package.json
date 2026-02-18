@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "volta-nodejs": "volta install node@20.16.0",
+    "volta-restoreB-board-nodejs": "volta install node@10.15.3"
   },
   "private": true,
   "dependencies": {
