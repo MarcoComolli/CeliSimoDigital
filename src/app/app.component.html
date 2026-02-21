@@ -1,9 +1,10 @@
 <main class="main">
 
-  <div class="name-instructions">Ciao! Come prima cosa, inserisci il tuo nome:</div>
-  <div class="input-name-form-container">
-    <input class="name-input" type="text" name="name-input"  [(ngModel)]="username" (input)="username = username.toLowerCase()">
+  <div class="name-instructions" [innerHTML]="response"></div>
+  <div *ngIf="this.status.phase === 0" class="input-name-form-container">
+    <input class="name-input" type="text" name="name-input"  [(ngModel)]="username" (input)="this.status.enableUppercase ? username : username = username.toLowerCase()">
     <button class="submit-name"(click)="onNameSubmit()">Invia</button>
   </div>
+  {{this.status.loginTry}}
 </main>
 <!-- <router-outlet /> -->

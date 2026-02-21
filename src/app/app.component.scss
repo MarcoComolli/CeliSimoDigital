@@ -8,6 +8,12 @@
   align-items: center;
   flex-direction: column;
 
+  .name-instructions{
+    text-align: center;
+    margin: 16px;
+    line-height: 1.5em;
+  }
+
   .input-name-form-container {
     display: flex;
     flex-direction: column;
