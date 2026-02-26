@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "volta-nodejs": "volta install node@20.16.0",
-    "volta-restoreB-board-nodejs": "volta install node@10.15.3"
+    "volta-restoreB-board-nodejs": "volta install node@10.15.3",
+    "build-production-github": "ng build --configuration production --base-href /CeliSimoDigital/",
+    "github-deploy": "npx angular-cli-ghpages --dir=dist/celi-simo/browser --no-silent"
   },
   "private": true,
   "dependencies": {
