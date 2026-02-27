@@ -3,24 +3,49 @@ body {
   margin: 0;
 }
 
+* {
+  // font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  // font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: none;
+  outline: none;
+  background: white;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: none;
+  background-color: #0d3ab3;
+  color: rgb(241, 239, 235);
 }
 
 .name-instructions .highlight {
-  color: blueviolet;
+  color: rgb(179 179 215);
 }
 
 .name-instructions .highlight2 {
-  color: blueviolet;
+  color: rgb(68, 99, 235);
   font-weight: bold;
 }
 
 .name-instructions .highlight3 {
-  color: blueviolet;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 2em;
+  color: rgb(68, 99, 235);
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: underline;
 }

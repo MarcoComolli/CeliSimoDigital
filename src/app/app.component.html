@@ -1,10 +1,11 @@
-<main class="main">
+<main class="main" [class.animate]="isCssAnimating">
 
-  <div class="name-instructions" [innerHTML]="response"></div>
+  <img *ngIf="this.status.phase === 0" class="logo" src="img/lugia_logo_resized.png" alt="lugia">
   <div *ngIf="this.status.phase === 0" class="input-name-form-container">
+  <div class="name-instructions" [innerHTML]="response"></div>
     <input class="name-input" type="text" name="name-input"  [(ngModel)]="username" (input)="this.status.enableUppercase ? username : username = username.toLowerCase()">
     <button class="submit-name"(click)="onNameSubmit()">Invia</button>
   </div>
-  {{this.status.loginTry}}
+  <button *ngIf="this.status.phase === 0" class="continue-button"(click)="onPhase0End()">Continua</button>
 </main>
 <!-- <router-outlet /> -->
