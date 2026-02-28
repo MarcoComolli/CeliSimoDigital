@@ -49,3 +49,12 @@ button {
   font-size: 1.5em;
   text-decoration: underline;
 }
+
+a {
+  color: #e481ef;
+  font-weight: bold;
+
+  &:active {
+    color: #e481ef;
+  }
+}

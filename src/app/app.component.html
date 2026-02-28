@@ -1,11 +1,88 @@
 <main class="main" [class.animate]="isCssAnimating">
-
-  <img *ngIf="this.status.phase === 0" class="logo" src="img/lugia_logo_resized.png" alt="lugia">
+  <img
+    *ngIf="this.status.phase === 0"
+    class="logo"
+    src="img/lugia_logo_resized.png"
+    alt="lugia"
+  />
   <div *ngIf="this.status.phase === 0" class="input-name-form-container">
-  <div class="name-instructions" [innerHTML]="response"></div>
-    <input class="name-input" type="text" name="name-input"  [(ngModel)]="username" (input)="this.status.enableUppercase ? username : username = username.toLowerCase()">
-    <button class="submit-name"(click)="onNameSubmit()">Invia</button>
+    <div class="name-instructions" [innerHTML]="response"></div>
+    <input
+      class="name-input"
+      type="text"
+      name="name-input"
+      enterkeyhint="Conferma"
+      (keydown.enter)="onNameSubmit()"
+      [(ngModel)]="username"
+      (input)="
+        this.status.enableUppercase
+          ? username
+          : (username = username.toLowerCase())
+      "
+    />
+    <button class="submit-name" (click)="onNameSubmit()">Invia</button>
   </div>
-  <button *ngIf="this.status.phase === 0" class="continue-button"(click)="onPhase0End()">Continua</button>
+
+  <div *ngIf="this.status.phase === 0">
+    <!-- <div>Complimenti ce l'hai fatta</div>
+    <div>Peccato non sei riuscito</div> -->
+    <button
+      *ngIf="this.status.phase === 0"
+      class="continue-button"
+      (click)="onPhase0End()"
+    >
+      Continua
+    </button>
+  </div>
+
+  <div class="phase-1-container" *ngIf="this.status.phase === 1">
+    <div class="explanation">Continua ora la tua sfida digitale! Cerca di completare tutte le prove seguenti e vedi se alla fine sei riuscito
+       a vincere una medaglia. <i>(controlla bene prima di premere "conferma" perchè non puoi tornare indietro)</i></div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <div class="accordion-header" (click)="toggleAccordion(0)"
+        [class.success]="status.challenges.geoHunter.isConfirmed && status.challenges.geoHunter.isSuccess"
+        [class.fail]="status.challenges.geoHunter.isConfirmed && !status.challenges.geoHunter.isSuccess">
+          <span>GeoHunter</span>
+          <span class="arrow" [class.open]="openAccordionIndex === 0"> ▼ </span>
+        </div>
+        <div class="accordion-content" [class.open]="openAccordionIndex === 0">
+          <div class="content" [class.confirmed]="status.challenges.geoHunter.isConfirmed">
+            <div><a href="https://www.geohuntergame.com/" target="_blank">-- GeoHunter --</a></div>
+            <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
+            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato es. 380">
+            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #delta name="delta" min="1" placeholder="Il tuo delta (+ 100 rispetto alla soluzione ottimale)">
+            <button class="confirm-btn" (click)="geoHunter(res.value, delta.value)">Conferma</button>
+            <div class="challenge-result">{{status.challenges.geoHunter.result}}</div>
+          </div>
+        </div>
+      </div>
+
+       <div class="accordion-item">
+        <div class="accordion-header" (click)="toggleAccordion(1)"
+        [class.success]="status.challenges.narutodleClassic.isConfirmed && status.challenges.narutodleClassic.isSuccess"
+        [class.fail]="status.challenges.narutodleClassic.isConfirmed && !status.challenges.narutodleClassic.isSuccess">
+          <span>Narutodle - classic</span>
+          <span class="arrow" [class.open]="openAccordionIndex === 1"> ▼ </span>
+        </div>
+        <div class="accordion-content" [class.open]="openAccordionIndex === 1">
+          <div class="content" [class.confirmed]="status.challenges.narutodleClassic.isConfirmed">
+            <div><a href="https://narutodle.net/classic" target="_blank">>>Narutodle - classic<<</a></div>
+            <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
+            <input class="form-input" [disabled]="status.challenges.narutodleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato es. 380">
+            <button class="confirm-btn" (click)="narutodleClassic(res.value)">Conferma</button>
+            <div class="challenge-result">{{status.challenges.narutodleClassic.result}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <audio #audio>
+      <source src="audio/morti.mp3" type="audio/mpeg" />
+      Il tuo browser non supporta l'audio.
+    </audio>
+  </div>
 </main>
 <!-- <router-outlet /> -->

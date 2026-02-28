@@ -42,11 +42,11 @@
       }
 
       55% {
-        transform: translate(-0%, 40vh) scale(80%);
+        transform: translate(-0%, 40vh) scale(70%);
       }
 
       65% {
-        transform: translate(-0%, 40vh) scale(130%);
+        transform: translate(-0%, 40vh) scale(160%);
       }
 
       75% {
@@ -63,10 +63,8 @@
     }
 
     .continue-button {
-
       animation: textFadeIn 2s ease forwards;
       animation-delay: 10s;
-
     }
 
     @keyframes textFadeIn {
@@ -75,14 +73,13 @@
       }
       to {
         opacity: 1;
-
       }
     }
   }
 
   .logo {
-    width: 300px;
-    height: 250px;
+    width: 250;
+    height: 208px;
     position: absolute;
     top: 30px;
   }
@@ -91,7 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 310px;
+    margin-top: 270px;
     transition: opacity 1s ease;
 
     .name-instructions {
@@ -120,5 +117,114 @@
   .continue-button {
     opacity: 0;
     padding: 20px 50px;
+  }
+
+  .phase-1-container {
+    width: 100%;
+    color: white;
+
+    .explanation {
+      margin: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .accordion {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(0 90 115 / 59%);
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease;
+      color: white;
+
+      &.success {
+        background-color: rgb(23 129 30 / 43%);
+      }
+
+      &.fail {
+        background-color: rgb(129 23 23 / 60%);
+      }
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .arrow.open {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 15px;
+      transition:
+        max-height 0.3s ease,
+        padding 0.3s ease;
+      background-color: rgb(79 79 79 / 26%);
+      color: white;
+
+      &.open {
+        max-height: 2000px; /* aumenta se il contenuto è lungo */
+        padding: 15px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        a {
+          margin: 10px;
+          display: block;
+          font-size: 1.2em;
+        }
+
+        .challenge-expl {
+          font-style: italic;
+          margin: 8px;
+        }
+
+        .form-input {
+          margin: 10px;
+          padding: 10px;
+        }
+
+        .confirm-btn {
+          padding: 8px 16px;
+          margin-top: 6px;
+        }
+
+        .challenge-result {
+          font-weight: bold;
+          color: #ffb300;
+          margin-top: 8px;
+          font-style: italic;
+          font-size: 0.9em;
+        }
+
+        &.confirmed {
+          //disabilita
+          .confirm-btn {
+            display: none;
+          }
+          .challenge-result {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }

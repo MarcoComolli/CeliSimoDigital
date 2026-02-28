@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Status } from '../models';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, NgIf],
+  imports: [RouterOutlet, FormsModule, NgIf, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -22,6 +22,10 @@ export class AppComponent {
 
   public isCssAnimating = false;
 
+  openAccordionIndex: number | null = null;
+
+  @ViewChild('audio') audioRef!: ElementRef<HTMLAudioElement>;
+
   constructor() {
     var storageItem = localStorage.getItem(this.statusKey);
     if (!storageItem) return;
@@ -31,8 +35,6 @@ export class AppComponent {
   }
 
   public onNameSubmit() {
-    this.startCssAnimation();
-
     let insertedInput = this.username;
     if (this.username === '') {
       return;
@@ -91,8 +93,7 @@ export class AppComponent {
     }
 
     if (toChecK === 'il tuo nome') {
-      this.status.phase = 1;
-      this.saveStatus();
+      this.startCssAnimation();
       return;
     }
 
@@ -109,9 +110,54 @@ export class AppComponent {
   }
 
   public onPhase0End() {
-          this.status.phase = 1;
-      this.saveStatus();
+    this.status.phase = 1;
+    this.saveStatus();
+  }
+
+  toggleAccordion(index: number): void {
+    this.openAccordionIndex = this.openAccordionIndex === index ? null : index;
+  }
+
+  geoHunter(res: string, delta: string) {
+    let resNumber = parseFloat(res);
+    let deltaNumber = parseFloat(delta);
+
+    let resStr = `Inseriti: ${resNumber} ${deltaNumber}.`;
+    if (resNumber > deltaNumber) {
+      this.status.challenges.geoHunter.isSuccess = true;
+    } else {
+      this.status.challenges.geoHunter.isSuccess = false;
+    }
+    this.status.challenges.geoHunter.result = resStr;
+    this.status.challenges.geoHunter.isConfirmed = true;
+    this.saveStatus();
+  }
+
+  narutodleClassic(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.narutodleClassic.isSuccess = true;
+
+    this.status.challenges.narutodleClassic.result = resStr;
+    this.status.challenges.narutodleClassic.isConfirmed = true;
+    this.saveStatus();
+  }
+
+  toggleAudio() {
+    const audio = this.audioRef.nativeElement;
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
   }
 }
 
-export enum MainPhase {}
+//bandiere
+//sarabanda anime (dungeon food, hiruga ruga, demon slayer)
+//geohunter, globle, narutodle, pokedle
+//voci modificate
+//accordion in ordine suonano (hai mai ascoltato gli accordion? Loro sanno qual'è la soluzione a questo engigma)
+//rickrolled
