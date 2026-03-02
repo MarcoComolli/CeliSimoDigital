@@ -145,6 +145,153 @@ export class AppComponent {
     this.saveStatus();
   }
 
+
+  narutodleJutsu(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.narutodleJutsu.isSuccess = true;
+
+    this.status.challenges.narutodleJutsu.result = resStr;
+    this.status.challenges.narutodleJutsu.isConfirmed = true;
+    this.saveStatus();
+  }
+  narutodleEye(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.narutodleEye.isSuccess = true;
+
+    this.status.challenges.narutodleEye.result = resStr;
+    this.status.challenges.narutodleEye.isConfirmed = true;
+    this.saveStatus();
+  }
+  pokedleClassic(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.pokedleClassic.isSuccess = true;
+
+    this.status.challenges.pokedleClassic.result = resStr;
+    this.status.challenges.pokedleClassic.isConfirmed = true;
+    this.saveStatus();
+  }
+  pokedleCard(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.pokedleCard.isSuccess = true;
+
+    this.status.challenges.pokedleCard.result = resStr;
+    this.status.challenges.pokedleCard.isConfirmed = true;
+    this.saveStatus();
+  }
+  pokedleDescription(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.pokedleDescription.isSuccess = true;
+
+    this.status.challenges.pokedleDescription.result = resStr;
+    this.status.challenges.pokedleDescription.isConfirmed = true;
+    this.saveStatus();
+  }
+  pokedleImage(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.pokedleImage.isSuccess = true;
+
+    this.status.challenges.pokedleImage.result = resStr;
+    this.status.challenges.pokedleImage.isConfirmed = true;
+    this.saveStatus();
+  }
+  globleClassic(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.globleClassic.isSuccess = true;
+
+    this.status.challenges.globleClassic.result = resStr;
+    this.status.challenges.globleClassic.isConfirmed = true;
+    this.saveStatus();
+  }
+  globleShape(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.globleShape.isSuccess = true;
+
+    this.status.challenges.globleShape.result = resStr;
+    this.status.challenges.globleShape.isConfirmed = true;
+    this.saveStatus();
+  }
+  flags(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.flags.isSuccess = true;
+
+    this.status.challenges.flags.result = resStr;
+    this.status.challenges.flags.isConfirmed = true;
+    this.saveStatus();
+  }
+  songs(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.songs.isSuccess = true;
+
+    this.status.challenges.songs.result = resStr;
+    this.status.challenges.songs.isConfirmed = true;
+    this.saveStatus();
+  }
+  accordionsAudio(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.accordionsAudio.isSuccess = true;
+
+    this.status.challenges.accordionsAudio.result = resStr;
+    this.status.challenges.accordionsAudio.isConfirmed = true;
+    this.saveStatus();
+  }
+  voices(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.voices.isSuccess = true;
+
+    this.status.challenges.voices.result = resStr;
+    this.status.challenges.voices.isConfirmed = true;
+    this.saveStatus();
+  }
+  rickRoll(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.rickRoll.isSuccess = true;
+
+    this.status.challenges.rickRoll.result = resStr;
+    this.status.challenges.rickRoll.isConfirmed = true;
+    this.saveStatus();
+  }
+
+
+
   toggleAudio() {
     const audio = this.audioRef.nativeElement;
     if (audio.paused) {
