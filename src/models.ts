@@ -20,6 +20,7 @@ export class Prove {
   globleShape: ProvaBase = new ProvaBase();
   flags: ProvaBase = new ProvaBase();
   songs: ProvaBase = new ProvaBase();
+  animeSongs: ProvaBase = new ProvaBase();
   accordionsAudio: ProvaBase = new ProvaBase();
   voices: ProvaBase = new ProvaBase();
   rickRoll: ProvaBase = new ProvaBase();

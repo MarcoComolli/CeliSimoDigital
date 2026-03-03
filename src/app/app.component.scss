@@ -2,7 +2,8 @@
   margin: 0;
   background-color: black;
   min-height: 100vh;
-  min-width: none;width: 100vw;
+  min-width: none;
+  width: 100vw;
   display: flex;
   // justify-content: center;
   align-items: center;
@@ -10,10 +11,8 @@
 
   //background a stelle, diminuisci size per più stlle
   background-image:
-    radial-gradient(2px 2px at 20px 30px, white, transparent),
-    radial-gradient(1px 1px at 40px 70px, white, transparent),
-    radial-gradient(1.5px 1.5px at 90px 40px, white, transparent),
-    radial-gradient(2px 2px at 130px 80px, white, transparent),
+    radial-gradient(2px 2px at 20px 30px, white, transparent), radial-gradient(1px 1px at 40px 70px, white, transparent),
+    radial-gradient(1.5px 1.5px at 90px 40px, white, transparent), radial-gradient(2px 2px at 130px 80px, white, transparent),
     radial-gradient(1px 1px at 160px 120px, white, transparent);
   background-repeat: repeat;
   background-size: 100px 100px;
@@ -21,6 +20,7 @@
   &.animate {
     .input-name-form-container {
       opacity: 0;
+      height: 0;
     }
 
     .logo {
@@ -62,7 +62,7 @@
       }
     }
 
-    .continue-button {
+    .first-phase-result {
       animation: textFadeIn 2s ease forwards;
       animation-delay: 10s;
     }
@@ -70,9 +70,11 @@
     @keyframes textFadeIn {
       from {
         opacity: 0;
+        height: 0;
       }
       to {
         opacity: 1;
+        height: auto;
       }
     }
   }
@@ -89,7 +91,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 270px;
-    transition: opacity 1s ease;
+    transition: all 1s ease;
 
     .name-instructions {
       text-align: center;
@@ -114,9 +116,20 @@
     }
   }
 
-  .continue-button {
+  .first-phase-result {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px;
+    text-align: center;
+    font-weight: bold;
     opacity: 0;
-    padding: 20px 50px;
+
+    .continue-button {
+      padding: 20px 50px;
+      margin-top: 24px;
+    }
   }
 
   .phase-1-container {
@@ -141,7 +154,7 @@
     .accordion-header {
       display: flex;
       justify-content: space-between;
-      background-color: rgb(0 90 115 / 59%);
+      background-color: rgb(36 42 55 / 67%);
       align-items: center;
       padding: 15px;
       cursor: pointer;
@@ -194,6 +207,7 @@
 
         .challenge-expl {
           font-style: italic;
+          text-align: center;
           margin: 8px;
         }
 
@@ -213,6 +227,23 @@
           margin-top: 8px;
           font-style: italic;
           font-size: 0.9em;
+        }
+
+        .flag-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 4px;
+          margin-top: 4px;
+          margin-left: auto;
+          margin-right: auto;
+          width: 100%;
+          justify-content: space-between;
+
+          .flag {
+            max-width: 100px;
+            max-height: 70px;
+          }
         }
 
         &.confirmed {

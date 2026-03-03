@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Status } from '../models';
@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, NgIf, NgFor],
+  imports: [FormsModule, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -22,14 +22,24 @@ export class AppComponent {
 
   public isCssAnimating = false;
 
-  openAccordionIndex: number | null = null;
+  public openAccordionIndex: number | null = null;
 
-  @ViewChild('audio') audioRef!: ElementRef<HTMLAudioElement>;
+  private soundMap: Record<string, HTMLAudioElement> = {
+    banana: new Audio('audio/banana.mp3'),
+    di: new Audio('audio/di.mp3'),
+    è: new Audio('audio/è.mp3'),
+    la: new Audio('audio/la.mp3'),
+    prova: new Audio('audio/prova.mp3'),
+    questa: new Audio('audio/questa.mp3'),
+    soluzione: new Audio('audio/soluzione.mp3'),
+  };
 
   constructor() {
     var storageItem = localStorage.getItem(this.statusKey);
     if (!storageItem) return;
     this.status = JSON.parse(storageItem);
+
+    //load audios
 
     this.status = new Status(); //TODO: cancella qui, solo x test
   }
@@ -116,6 +126,30 @@ export class AppComponent {
 
   toggleAccordion(index: number): void {
     this.openAccordionIndex = this.openAccordionIndex === index ? null : index;
+    //in chiusura
+    if (this.openAccordionIndex !== index) {
+      if (index === 2) {
+        this.playAudio('di');
+      }
+      if (index === 4) {
+        this.playAudio('la');
+      }
+      if (index === 5) {
+        this.playAudio('è');
+      }
+      if (index === 7) {
+        this.playAudio('questa');
+      }
+      if (index === 9) {
+        this.playAudio('banana');
+      }
+      if (index === 10) {
+        this.playAudio('prova');
+      }
+      if (index === 11) {
+        this.playAudio('soluzione');
+      }
+    }
   }
 
   geoHunter(res: string, delta: string) {
@@ -144,7 +178,6 @@ export class AppComponent {
     this.status.challenges.narutodleClassic.isConfirmed = true;
     this.saveStatus();
   }
-
 
   narutodleJutsu(res: string) {
     let resNumber = parseFloat(res);
@@ -234,10 +267,9 @@ export class AppComponent {
     this.status.challenges.globleShape.isConfirmed = true;
     this.saveStatus();
   }
-  flags(res: string) {
-    let resNumber = parseFloat(res);
+  flags(flags: string[]) {
 
-    let resStr = `Inseriti: ${resNumber}.`;
+    let resStr = `Inseriti: ${flags.join(",")}.`;
 
     this.status.challenges.flags.isSuccess = true;
 
@@ -245,6 +277,7 @@ export class AppComponent {
     this.status.challenges.flags.isConfirmed = true;
     this.saveStatus();
   }
+
   songs(res: string) {
     let resNumber = parseFloat(res);
 
@@ -256,6 +289,19 @@ export class AppComponent {
     this.status.challenges.songs.isConfirmed = true;
     this.saveStatus();
   }
+
+  animeSongs(res: string) {
+    let resNumber = parseFloat(res);
+
+    let resStr = `Inseriti: ${resNumber}.`;
+
+    this.status.challenges.animeSongs.isSuccess = true;
+
+    this.status.challenges.animeSongs.result = resStr;
+    this.status.challenges.animeSongs.isConfirmed = true;
+    this.saveStatus();
+  }
+
   accordionsAudio(res: string) {
     let resNumber = parseFloat(res);
 
@@ -290,20 +336,17 @@ export class AppComponent {
     this.saveStatus();
   }
 
-
-
-  toggleAudio() {
-    const audio = this.audioRef.nativeElement;
-    if (audio.paused) {
+  playAudio(key: keyof typeof this.soundMap) {
+    const audio = this.soundMap[key];
+    if (audio) {
+      audio.currentTime = 0;
       audio.play();
-    } else {
-      audio.pause();
     }
   }
 }
 
 //bandiere
-//sarabanda anime (dungeon food, hiruga ruga, demon slayer)
+//sarabanda anime (dungeon food, hiruga ruga, demon slayer, ken il guerriero)
 //geohunter, globle, narutodle, pokedle
 //voci modificate
 //accordion in ordine suonano (hai mai ascoltato gli accordion? Loro sanno qual'è la soluzione a questo engigma)
