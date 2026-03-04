@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -14,6 +14,8 @@ export class AppComponent {
   public phase: number = 0;
   public username: string = '';
   public response: string = 'Ciao! Come prima cosa, inserisci il tuo nome:';
+
+  public stringaDaCancellare: string = "wooo"
 
   private instruction_base: string = 'Forza, inserisci il tuo nome:';
   private instruction: string = '';

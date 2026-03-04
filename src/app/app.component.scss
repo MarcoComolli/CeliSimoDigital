@@ -238,8 +238,21 @@
         }
 
         .voice-row {
+          margin: 8px;
           .toggle-audio-btn {
             padding: 14px;
+          }
+
+          .dropdown {
+            margin-left: 16px;
+            min-width: 120px;
+            padding: 6px;
+            text-align: center;
+            font-weight: bold;
+            .ddown-opt {
+              color: rebeccapurple;
+              font-weight: bold;
+            }
           }
         }
 
@@ -261,7 +274,6 @@
         }
 
         &.confirmed {
-
           //disabilita
           .confirm-btn {
             display: none;
