@@ -72,6 +72,7 @@
         opacity: 0;
         height: 0;
       }
+
       to {
         opacity: 1;
         height: auto;
@@ -190,7 +191,8 @@
       color: white;
 
       &.open {
-        max-height: 2000px; /* aumenta se il contenuto è lungo */
+        max-height: 2000px;
+        /* aumenta se il contenuto è lungo */
         padding: 15px;
       }
 
@@ -229,6 +231,18 @@
           font-size: 0.9em;
         }
 
+        .music-row {
+          .toggle-audio-btn {
+            padding: 14px;
+          }
+        }
+
+        .voice-row {
+          .toggle-audio-btn {
+            padding: 14px;
+          }
+        }
+
         .flag-row {
           display: flex;
           flex-direction: row;
@@ -247,10 +261,12 @@
         }
 
         &.confirmed {
+
           //disabilita
           .confirm-btn {
             display: none;
           }
+
           .challenge-result {
             display: block;
           }

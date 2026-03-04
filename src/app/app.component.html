@@ -2,37 +2,33 @@
   <img *ngIf="this.status.phase === 0" class="logo" src="img/lugia_logo_resized.png" alt="lugia" />
   <div *ngIf="this.status.phase === 0" class="input-name-form-container">
     <div class="name-instructions" [innerHTML]="response"></div>
-    <input
-      class="name-input"
-      type="text"
-      name="name-input"
-      enterkeyhint="Conferma"
-      (keydown.enter)="onNameSubmit()"
-      [(ngModel)]="username"
-      (input)="this.status.enableUppercase ? username : (username = username.toLowerCase())" />
+    <input class="name-input" type="text" name="name-input" enterkeyhint="Conferma" (keydown.enter)="onNameSubmit()"
+      [(ngModel)]="username" (input)="this.status.enableUppercase ? username : (username = username.toLowerCase())" />
     <button class="submit-name" (click)="onNameSubmit()">Invia</button>
   </div>
 
   <div class="first-phase-result" *ngIf="this.status.phase === 0">
-    <div *ngIf="status.loginRequiredTries - status.loginTry >= 0">Complimenti! Questa era la prima prova, completata con successo!</div>
+    <div *ngIf="status.loginRequiredTries - status.loginTry >= 0">Complimenti! Questa era la prima prova, completata con
+      successo!</div>
     <div *ngIf="status.loginRequiredTries - status.loginTry < 0">
-      Eh niente, la prima sfida non è andata bene. {{ status.loginTry - status.loginRequiredTries }} tentativi di troppo. Ma non demordere, altre sfide ti attendono
+      Eh niente, la prima sfida non è andata bene. {{ status.loginTry - status.loginRequiredTries }} tentativi di
+      troppo. Ma non demordere, altre sfide ti attendono
     </div>
     <button *ngIf="this.status.phase === 0" class="continue-button" (click)="onPhase0End()">Continua</button>
   </div>
 
   <div class="phase-1-container" *ngIf="this.status.phase === 1">
     <div class="explanation">
-      Continua ora la tua sfida digitale! Cerca di completare tutte le prove seguenti e vedi se alla fine sei riuscito a vincere una medaglia. Una volta confermate tutte le prove
+      Continua ora la tua sfida digitale! Cerca di completare tutte le prove seguenti e vedi se alla fine sei riuscito a
+      vincere una medaglia. Una volta confermate tutte le prove
       saprai il risultato!
-      <i>(controlla bene prima di premere "conferma" in ogni prova perchè il risultato è definitivo e puoi tornare indietro)</i>
+      <i>(controlla bene prima di premere "conferma" in ogni prova perchè il risultato è definitivo e puoi tornare
+        indietro)</i>
     </div>
     <div class="accordion">
       <!-- Geohunter -->
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(0)"
+        <div class="accordion-header" (click)="toggleAccordion(0)"
           [class.success]="status.challenges.geoHunter.isConfirmed && status.challenges.geoHunter.isSuccess"
           [class.fail]="status.challenges.geoHunter.isConfirmed && !status.challenges.geoHunter.isSuccess">
           <span>GeoHunter</span>
@@ -42,8 +38,10 @@
           <div class="content" [class.confirmed]="status.challenges.geoHunter.isConfirmed">
             <div><a href="https://www.geohuntergame.com/" target="_blank">-- GeoHunter --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
-            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato (es. 380)" />
-            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #delta name="delta" min="1" placeholder="Il target dato dal sito" />
+            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #res name="res"
+              min="1" placeholder="Il tuo risultato (es. 380)" />
+            <input class="form-input" [disabled]="status.challenges.geoHunter.isConfirmed" type="number" #delta
+              name="delta" min="1" placeholder="Il target dato dal sito" />
             <button class="confirm-btn" (click)="geoHunter(res.value, delta.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.geoHunter.result }}</div>
           </div>
@@ -52,9 +50,7 @@
 
       <!-- Naruto classic -->
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(1)"
+        <div class="accordion-header" (click)="toggleAccordion(1)"
           [class.success]="status.challenges.narutodleClassic.isConfirmed && status.challenges.narutodleClassic.isSuccess"
           [class.fail]="status.challenges.narutodleClassic.isConfirmed && !status.challenges.narutodleClassic.isSuccess">
           <span>Narutodle - Classic</span>
@@ -63,8 +59,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 1">
           <div class="content" [class.confirmed]="status.challenges.narutodleClassic.isConfirmed">
             <div><a href="https://narutodle.net/classic" target="_blank">-- Narutodle - classic --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.narutodleClassic.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="narutodleClassic(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleClassic.result }}</div>
           </div>
@@ -72,9 +70,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(2)"
+        <div class="accordion-header" (click)="toggleAccordion(2)"
           [class.success]="status.challenges.narutodleJutsu.isConfirmed && status.challenges.narutodleJutsu.isSuccess"
           [class.fail]="status.challenges.narutodleJutsu.isConfirmed && !status.challenges.narutodleJutsu.isSuccess">
           <span>Narutodle - Justsu</span>
@@ -83,8 +79,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 2">
           <div class="content" [class.confirmed]="status.challenges.narutodleJutsu.isConfirmed">
             <div><a href="https://narutodle.net/jutsu" target="_blank">-- Narutodle - Jutsu --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleJutsu.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.narutodleJutsu.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="narutodleJutsu(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleJutsu.result }}</div>
           </div>
@@ -92,9 +90,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(3)"
+        <div class="accordion-header" (click)="toggleAccordion(3)"
           [class.success]="status.challenges.narutodleEye.isConfirmed && status.challenges.narutodleEye.isSuccess"
           [class.fail]="status.challenges.narutodleEye.isConfirmed && !status.challenges.narutodleEye.isSuccess">
           <span>Narutodle - Occhio</span>
@@ -103,8 +99,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 3">
           <div class="content" [class.confirmed]="status.challenges.narutodleEye.isConfirmed">
             <div><a href="https://narutodle.net/eye" target="_blank">-- Narutodle - Occhio --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleEye.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.narutodleEye.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="narutodleEye(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleEye.result }}</div>
           </div>
@@ -113,9 +111,7 @@
 
       <!-- pokedle -->
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(4)"
+        <div class="accordion-header" (click)="toggleAccordion(4)"
           [class.success]="status.challenges.pokedleClassic.isConfirmed && status.challenges.pokedleClassic.isSuccess"
           [class.fail]="status.challenges.pokedleClassic.isConfirmed && !status.challenges.pokedleClassic.isSuccess">
           <span>Pokedle - Classic</span>
@@ -124,8 +120,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 4">
           <div class="content" [class.confirmed]="status.challenges.pokedleClassic.isConfirmed">
             <div><a href="https://pokedle.net/classic" target="_blank">-- Pokedle - Classic --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.pokedleClassic.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="pokedleClassic(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleClassic.result }}</div>
           </div>
@@ -133,9 +131,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(5)"
+        <div class="accordion-header" (click)="toggleAccordion(5)"
           [class.success]="status.challenges.pokedleCard.isConfirmed && status.challenges.pokedleCard.isSuccess"
           [class.fail]="status.challenges.pokedleCard.isConfirmed && !status.challenges.pokedleCard.isSuccess">
           <span>Pokedle - Carta</span>
@@ -144,8 +140,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 5">
           <div class="content" [class.confirmed]="status.challenges.pokedleCard.isConfirmed">
             <div><a href="https://pokedle.net/card" target="_blank">-- Pokedle - Card --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleCard.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.pokedleCard.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="pokedleCard(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleCard.result }}</div>
           </div>
@@ -153,9 +151,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(6)"
+        <div class="accordion-header" (click)="toggleAccordion(6)"
           [class.success]="status.challenges.pokedleDescription.isConfirmed && status.challenges.pokedleDescription.isSuccess"
           [class.fail]="status.challenges.pokedleDescription.isConfirmed && !status.challenges.pokedleDescription.isSuccess">
           <span>Pokedle - Pokedex</span>
@@ -164,8 +160,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 6">
           <div class="content" [class.confirmed]="status.challenges.pokedleDescription.isConfirmed">
             <div><a href="https://pokedle.net/flavor" target="_blank">-- Pokedle - Pokedex --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleDescription.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.pokedleDescription.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="pokedleDescription(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleDescription.result }}</div>
           </div>
@@ -173,9 +171,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(7)"
+        <div class="accordion-header" (click)="toggleAccordion(7)"
           [class.success]="status.challenges.pokedleImage.isConfirmed && status.challenges.pokedleImage.isSuccess"
           [class.fail]="status.challenges.pokedleImage.isConfirmed && !status.challenges.pokedleImage.isSuccess">
           <span>Pokedle - Silhouette</span>
@@ -184,8 +180,10 @@
         <div class="accordion-content" [class.open]="openAccordionIndex === 7">
           <div class="content" [class.confirmed]="status.challenges.pokedleImage.isConfirmed">
             <div><a href="https://pokedle.net/silhouette" target="_blank">-- Pokedle - Silhouette --</a></div>
-            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleImage.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato
+            </div>
+            <input class="form-input" [disabled]="status.challenges.pokedleImage.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="pokedleImage(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleImage.result }}</div>
           </div>
@@ -193,9 +191,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(8)"
+        <div class="accordion-header" (click)="toggleAccordion(8)"
           [class.success]="status.challenges.globleClassic.isConfirmed && status.challenges.globleClassic.isSuccess"
           [class.fail]="status.challenges.globleClassic.isConfirmed && !status.challenges.globleClassic.isSuccess">
           <span>Globle - Classic</span>
@@ -205,9 +201,11 @@
           <div class="content" [class.confirmed]="status.challenges.globleClassic.isConfirmed">
             <div><a href="https://globle.org/?" target="_blank">-- Globle - classic --</a></div>
             <div class="challenge-expl">
-              Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini disabilitano dalle opzioni in alto la voce "display direction"
+              Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini
+              disabilitano dalle opzioni in alto la voce "display direction"
             </div>
-            <input class="form-input" [disabled]="status.challenges.globleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <input class="form-input" [disabled]="status.challenges.globleClassic.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="globleClassic(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.globleClassic.result }}</div>
           </div>
@@ -215,9 +213,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(9)"
+        <div class="accordion-header" (click)="toggleAccordion(9)"
           [class.success]="status.challenges.globleShape.isConfirmed && status.challenges.globleShape.isSuccess"
           [class.fail]="status.challenges.globleShape.isConfirmed && !status.challenges.globleShape.isSuccess">
           <span>Globle - Forma</span>
@@ -227,9 +223,11 @@
           <div class="content" [class.confirmed]="status.challenges.globleShape.isConfirmed">
             <div><a href="https://worldlegame.io/?" target="_blank">-- Globle - Forma --</a></div>
             <div class="challenge-expl">
-              Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini disabilitano dalle opzioni in alto la voce "display direction"
+              Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini
+              disabilitano dalle opzioni in alto la voce "display direction"
             </div>
-            <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
+            <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #res
+              name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="globleShape(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.globleShape.result }}</div>
           </div>
@@ -237,9 +235,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(10)"
+        <div class="accordion-header" (click)="toggleAccordion(10)"
           [class.success]="status.challenges.flags.isConfirmed && status.challenges.flags.isSuccess"
           [class.fail]="status.challenges.flags.isConfirmed && !status.challenges.flags.isSuccess">
           <span>Bandiere</span>
@@ -247,7 +243,8 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 10">
           <div class="content" [class.confirmed]="status.challenges.flags.isConfirmed">
-            <div class="challenge-expl">A quale stato appartengono le seguenti bandiere? Scrivi in tutte le caselle di testo e solo infine premi su conferma</div>
+            <div class="challenge-expl">A quale stato appartengono le seguenti bandiere? Scrivi in tutte le caselle di
+              testo e solo infine premi su conferma</div>
             <div class="flag-row">
               <img class="flag" src="img\flags\al.webp" />
               <input class="form-input" [disabled]="status.challenges.flags.isConfirmed" type="text" #alb name="res" />
@@ -285,16 +282,15 @@
               <input class="form-input" [disabled]="status.challenges.flags.isConfirmed" type="text" #sve name="res" />
             </div>
 
-            <button class="confirm-btn" (click)="flags([alb.value, aus.value, egy.value, mar.value, mac.value, nig.value, nep.value, ara.value, sve.value])">Conferma</button>
+            <button class="confirm-btn"
+              (click)="flags([alb.value, aus.value, egy.value, mar.value, mac.value, nig.value, nep.value, ara.value, sve.value])">Conferma</button>
             <div class="challenge-result">{{ status.challenges.flags.result }}</div>
           </div>
         </div>
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(12)"
+        <div class="accordion-header" (click)="toggleAccordion(12)"
           [class.success]="status.challenges.accordionsAudio.isConfirmed && status.challenges.accordionsAudio.isSuccess"
           [class.fail]="status.challenges.accordionsAudio.isConfirmed && !status.challenges.accordionsAudio.isSuccess">
           <span>Accordions</span>
@@ -307,7 +303,8 @@
               <b>ascoltarli</b>
               attentamente, in fondo, loro sanno la soluzione a questa prova...
             </div>
-            <input class="form-input" [disabled]="status.challenges.accordionsAudio.isConfirmed" type="text" #res name="res" min="1" placeholder="Il risultato è:" />
+            <input class="form-input" [disabled]="status.challenges.accordionsAudio.isConfirmed" type="text" #res
+              name="res" min="1" placeholder="Il risultato è:" />
             <button class="confirm-btn" (click)="accordionsAudio(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.accordionsAudio.result }}</div>
           </div>
@@ -315,9 +312,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(11)"
+        <div class="accordion-header" (click)="toggleAccordion(11)"
           [class.success]="status.challenges.songs.isConfirmed && status.challenges.songs.isSuccess"
           [class.fail]="status.challenges.songs.isConfirmed && !status.challenges.songs.isSuccess">
           <span>Sarabanda</span>
@@ -325,8 +320,44 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 11">
           <div class="content" [class.confirmed]="status.challenges.songs.isConfirmed">
-            <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
-            <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato es. 380" />
+            <div class="challenge-expl">Scrivi il titolo o la band a seconda di quello specificato dentro la casella di
+              testo</div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+
             <button class="confirm-btn" (click)="songs(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.songs.result }}</div>
           </div>
@@ -334,9 +365,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(15)"
+        <div class="accordion-header" (click)="toggleAccordion(15)"
           [class.success]="status.challenges.animeSongs.isConfirmed && status.challenges.animeSongs.isSuccess"
           [class.fail]="status.challenges.animeSongs.isConfirmed && !status.challenges.animeSongs.isSuccess">
           <span>Sarabanda Anime</span>
@@ -344,8 +373,44 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 15">
           <div class="content" [class.confirmed]="status.challenges.animeSongs.isConfirmed">
-            <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
-            <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato es. 380" />
+            <div class="challenge-expl">Scrivi il titolo o la band a seconda di quello specificato dentro la casella di
+              testo</div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
+
             <button class="confirm-btn" (click)="animeSongs(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.animeSongs.result }}</div>
           </div>
@@ -353,9 +418,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(13)"
+        <div class="accordion-header" (click)="toggleAccordion(13)"
           [class.success]="status.challenges.voices.isConfirmed && status.challenges.voices.isSuccess"
           [class.fail]="status.challenges.voices.isConfirmed && !status.challenges.voices.isSuccess">
           <span>Voci chipmunk</span>
@@ -363,8 +426,13 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 13">
           <div class="content" [class.confirmed]="status.challenges.voices.isConfirmed">
-            <div class="challenge-expl">Fai la daily challenge e inserisci il tuo risultato</div>
-            <input class="form-input" [disabled]="status.challenges.voices.isConfirmed" type="number" #res name="res" min="1" placeholder="Il tuo risultato es. 380" />
+            <div class="challenge-expl">Alcune persone che conosci ti hanno lasciato dei messaggi. La voce e' stata
+              modificata, associa la persona dalla dropdown all'audio riprodotto</div>
+            <div class="voice-row">
+              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res"
+                placeholder="Titolo" />
+            </div>
             <button class="confirm-btn" (click)="voices(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.voices.result }}</div>
           </div>
@@ -372,9 +440,7 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(14)"
+        <div class="accordion-header" (click)="toggleAccordion(14)"
           [class.success]="status.challenges.rickRoll.isConfirmed && status.challenges.rickRoll.isSuccess"
           [class.fail]="status.challenges.rickRoll.isConfirmed && !status.challenges.rickRoll.isSuccess">
           <span>Sfida segreta</span>
@@ -382,9 +448,11 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 14">
           <div class="content" [class.confirmed]="status.challenges.rickRoll.isConfirmed">
-            <div><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">-- Vai alla sfida misteriosa --</a></div>
+            <div><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">-- Vai alla sfida misteriosa
+                --</a></div>
             <div class="challenge-expl">Questo...è un mistero...inserisci il risultato!</div>
-            <input class="form-input" [disabled]="status.challenges.rickRoll.isConfirmed" type="number" #res name="res" min="1" placeholder="Risultato" />
+            <input class="form-input" [disabled]="status.challenges.rickRoll.isConfirmed" type="number" #res name="res"
+              min="1" placeholder="Risultato" />
             <button class="confirm-btn" (click)="rickRoll(res.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.rickRoll.result }}</div>
           </div>
