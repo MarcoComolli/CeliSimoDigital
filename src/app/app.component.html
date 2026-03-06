@@ -65,8 +65,8 @@
           <div class="content" [class.confirmed]="status.challenges.narutodleClassic.isConfirmed">
             <div><a href="https://narutodle.net/classic" target="_blank">-- Narutodle - classic --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="narutodleClassic(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.narutodleClassic.isConfirmed" type="number" #a1 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="narutodleClassic(a1.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleClassic.result }}</div>
           </div>
         </div>
@@ -85,8 +85,8 @@
           <div class="content" [class.confirmed]="status.challenges.narutodleJutsu.isConfirmed">
             <div><a href="https://narutodle.net/jutsu" target="_blank">-- Narutodle - Jutsu --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleJutsu.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="narutodleJutsu(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.narutodleJutsu.isConfirmed" type="number" #a2 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="narutodleJutsu(a2.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleJutsu.result }}</div>
           </div>
         </div>
@@ -105,8 +105,8 @@
           <div class="content" [class.confirmed]="status.challenges.narutodleEye.isConfirmed">
             <div><a href="https://narutodle.net/eye" target="_blank">-- Narutodle - Occhio --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.narutodleEye.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="narutodleEye(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.narutodleEye.isConfirmed" type="number" #a3 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="narutodleEye(a3.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.narutodleEye.result }}</div>
           </div>
         </div>
@@ -126,8 +126,8 @@
           <div class="content" [class.confirmed]="status.challenges.pokedleClassic.isConfirmed">
             <div><a href="https://pokedle.net/classic" target="_blank">-- Pokedle - Classic --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="pokedleClassic(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.pokedleClassic.isConfirmed" type="number" #a4 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="pokedleClassic(a4.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleClassic.result }}</div>
           </div>
         </div>
@@ -146,8 +146,8 @@
           <div class="content" [class.confirmed]="status.challenges.pokedleCard.isConfirmed">
             <div><a href="https://pokedle.net/card" target="_blank">-- Pokedle - Card --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleCard.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="pokedleCard(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.pokedleCard.isConfirmed" type="number" #a5 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="pokedleCard(a5.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleCard.result }}</div>
           </div>
         </div>
@@ -166,8 +166,8 @@
           <div class="content" [class.confirmed]="status.challenges.pokedleDescription.isConfirmed">
             <div><a href="https://pokedle.net/flavor" target="_blank">-- Pokedle - Pokedex --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleDescription.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="pokedleDescription(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.pokedleDescription.isConfirmed" type="number" #a6 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="pokedleDescription(a6.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleDescription.result }}</div>
           </div>
         </div>
@@ -186,8 +186,8 @@
           <div class="content" [class.confirmed]="status.challenges.pokedleImage.isConfirmed">
             <div><a href="https://pokedle.net/silhouette" target="_blank">-- Pokedle - Silhouette --</a></div>
             <div class="challenge-expl">Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato</div>
-            <input class="form-input" [disabled]="status.challenges.pokedleImage.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="pokedleImage(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.pokedleImage.isConfirmed" type="number" #a7 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="pokedleImage(a7.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.pokedleImage.result }}</div>
           </div>
         </div>
@@ -208,8 +208,8 @@
             <div class="challenge-expl">
               Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini disabilitano dalle opzioni in alto la voce "display direction"
             </div>
-            <input class="form-input" [disabled]="status.challenges.globleClassic.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="globleClassic(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.globleClassic.isConfirmed" type="number" #a8 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="globleClassic(a8.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.globleClassic.result }}</div>
           </div>
         </div>
@@ -230,8 +230,8 @@
             <div class="challenge-expl">
               Fai la daily challenge e inserisci il numero di tentativi in cui hai indovinato. P.s. i veri uomini disabilitano dalle opzioni in alto la voce "display direction"
             </div>
-            <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #res name="res" min="1" placeholder="Numero di tentativi" />
-            <button class="confirm-btn" (click)="globleShape(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #a9 name="res" min="1" placeholder="Numero di tentativi" />
+            <button class="confirm-btn" (click)="globleShape(a9.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.globleShape.result }}</div>
           </div>
         </div>
@@ -306,11 +306,12 @@
             <div class="challenge-expl">
               Sembra che gli accordions abbiano qualcosa da dire. Forse è il caso di
               <b>ascoltarli</b>
-              attentamente quando timidamente si fanno piccoli piccoli. <br>
+              attentamente quando timidamente si fanno piccoli piccoli.
+              <br />
               Beh, in fondo, loro sanno la soluzione a questa prova...
             </div>
-            <input class="form-input" [disabled]="status.challenges.accordionsAudio.isConfirmed" type="text" #res name="res" min="1" placeholder="Il risultato è:" />
-            <button class="confirm-btn" (click)="accordionsAudio(res.value)">Conferma</button>
+            <input class="form-input" [disabled]="status.challenges.accordionsAudio.isConfirmed" type="text" #b1 name="res" min="1" placeholder="Il risultato è:" />
+            <button class="confirm-btn" (click)="accordionsAudio(b1.value)">Conferma</button>
             <div class="challenge-result">{{ status.challenges.accordionsAudio.result }}</div>
           </div>
         </div>
@@ -329,35 +330,43 @@
           <div class="content" [class.confirmed]="status.challenges.songs.isConfirmed">
             <div class="challenge-expl">Scrivi il titolo o la band a seconda di quello specificato dentro la casella di testo</div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('linkin')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c1 name="res" placeholder="Titolo canzone" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('amon')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c2 name="res" placeholder="Nome band" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('eroe')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c3 name="res" placeholder="Titolo canzone" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('pressure')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c4 name="res" placeholder="Titolo canzone" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('sandman')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c5 name="res" placeholder="Titolo canzone" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('lotr')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c6 name="res" placeholder="Compositore" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('sabaton')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c7 name="res" placeholder="Titolo canzone" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('nexus')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c8 name="res" placeholder="Nome band" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('inflam')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c9 name="res" placeholder="Nome band" />
             </div>
 
-            <button class="confirm-btn" (click)="songs(res.value)">Conferma</button>
+            <button class="confirm-btn" (click)="songs([c1.value,c2.value ,c3.value ,c4.value ,c5.value ,c6.value ,c7.value ,c8.value ,c9.value ,])">Conferma</button>
             <div class="challenge-result">{{ status.challenges.songs.result }}</div>
           </div>
         </div>
@@ -374,37 +383,53 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 15">
           <div class="content" [class.confirmed]="status.challenges.animeSongs.isConfirmed">
-            <div class="challenge-expl">Scrivi il titolo o la band a seconda di quello specificato dentro la casella di testo</div>
-            <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+            <div class="challenge-expl">
+              Queste canzoni sono (principalmente) le opening di alcuni anime che hai visto. Scrivi a quale anime appartengono
+              <br />
+              Il nome puoi scriverlo in inglese o giapponese (o in italiano se sono stati tradotti) a tua preferenza
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('deathnote')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d1 name="res" placeholder="Nome anime" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('aot')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d2 name="res" placeholder="Nome anime" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('blackclover')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d3 name="res" placeholder="Nome anime" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('demonslayer')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d4 name="res" placeholder="Nome anime" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('dungeonfood')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d5 name="res" placeholder="Nome anime" />
             </div>
             <div class="music-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
-              <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" />
+              <button class="toggle-audio-btn" (click)="playAudio('ken')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d6 name="res" placeholder="Nome anime" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('loghorizon')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d7 name="res" placeholder="Nome anime" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('dragonball')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d8 name="res" placeholder="Nome anime" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('naruto')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d9 name="res" placeholder="Nome anime" />
+            </div>
+            <div class="music-row">
+              <button class="toggle-audio-btn" (click)="playAudio('mha')">Play</button>
+              <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d10 name="res" placeholder="Nome anime" />
             </div>
 
-            <button class="confirm-btn" (click)="animeSongs(res.value)">Conferma</button>
+            <button class="confirm-btn" (click)="animeSongs([d1.value,d2.value,d3.value,d4.value,d5.value,d6.value,d7.value,d8.value,d9.value,d10.value,])">Conferma</button>
             <div class="challenge-result">{{ status.challenges.animeSongs.result }}</div>
           </div>
         </div>
@@ -450,20 +475,15 @@
       </div>
 
       <div class="accordion-item">
-        <div
-          class="accordion-header"
-          (click)="toggleAccordion(14)"
-          [class.success]="status.challenges.rickRoll.isConfirmed && status.challenges.rickRoll.isSuccess"
-          [class.fail]="status.challenges.rickRoll.isConfirmed && !status.challenges.rickRoll.isSuccess">
+        <div class="accordion-header" (click)="toggleAccordion(14)" [class.success]="status.challenges.rickRoll.isConfirmed && status.challenges.rickRoll.isSuccess">
           <span>Sfida segreta</span>
           <span class="arrow" [class.open]="openAccordionIndex === 14">▼</span>
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 14">
           <div class="content" [class.confirmed]="status.challenges.rickRoll.isConfirmed">
             <div><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">-- Vai alla sfida misteriosa --</a></div>
-            <div class="challenge-expl">Questo...è un mistero...inserisci il risultato!</div>
-            <input class="form-input" [disabled]="status.challenges.rickRoll.isConfirmed" type="number" #res name="res" min="1" placeholder="Risultato" />
-            <button class="confirm-btn" (click)="rickRoll(res.value)">Conferma</button>
+            <div class="challenge-expl">Questo...è un mistero...completa la sfida!</div>
+            <button *ngIf="status.challenges.rickRoll.isConfirmed" class="confirm-btn">Conferma</button>
             <div class="challenge-result">{{ status.challenges.rickRoll.result }}</div>
           </div>
         </div>

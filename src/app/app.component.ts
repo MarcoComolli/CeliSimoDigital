@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Status } from '../models';
 import { NgFor, NgIf } from '@angular/common';
@@ -43,12 +42,14 @@ export class AppComponent {
     prova: new Audio('audio/prova.mp3'),
     questa: new Audio('audio/questa.mp3'),
     soluzione: new Audio('audio/soluzione.mp3'),
+    //voices
     marco: new Audio('audio/chip/mar.mp3'),
     pavel: new Audio('audio/chip/pav.mp3'),
     giova: new Audio('audio/chip/gio.mp3'),
     pit: new Audio('audio/chip/pit.mp3'),
     michel: new Audio('audio/chip/mic.mp3'),
     dze: new Audio('audio/chip/dze.mp3'),
+    //band
     amon: new Audio('audio/sarab/amon.mp3'),
     eroe: new Audio('audio/sarab/eroe.mp3'),
     linkin: new Audio('audio/sarab/linkin.mp3'),
@@ -57,7 +58,9 @@ export class AppComponent {
     pressure: new Audio('audio/sarab/pressure.mp3'),
     sabaton: new Audio('audio/sarab/sabaton.mp3'),
     sandman: new Audio('audio/sarab/sandman.mp3'),
-    aot: new Audio('audio/sarab/aot.mp3'),
+    inflam: new Audio('audio/sarab/inflam.mp3'),
+    //anime
+    aot: new Audio('audio/anim/aot.mp3'),
     blackclover: new Audio('audio/anim/blackclover.mp3'),
     deathnote: new Audio('audio/anim/deathnote.mp3'),
     demonslayer: new Audio('audio/anim/demonslayer.mp3'),
@@ -191,12 +194,18 @@ export class AppComponent {
     let resNumber = parseFloat(res);
     let targetNumber = parseFloat(target);
 
-    let resStr = `Inseriti: ${resNumber} ${targetNumber}.`;
-    if (resNumber > targetNumber) {
+    let threshold = 0;
+    if (targetNumber < 180) {
+      threshold = 290;
+    } else {
+      threshold = targetNumber * 1.6;
+    }
+    if (resNumber <= threshold) {
       this.status.challenges.geoHunter.isSuccess = true;
     } else {
       this.status.challenges.geoHunter.isSuccess = false;
     }
+    let resStr = `Inseriti: result: ${resNumber}, target: ${targetNumber}. Necessari per vincere < di ${threshold}`;
     this.status.challenges.geoHunter.result = resStr;
     this.status.challenges.geoHunter.isConfirmed = true;
     this.saveStatus();
@@ -205,9 +214,13 @@ export class AppComponent {
   narutodleClassic(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.narutodleClassic.isSuccess = true;
+    let threshold = 10;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.narutodleClassic.isSuccess = true;
+    } else {
+      this.status.challenges.narutodleClassic.isSuccess = false;
+    }
 
     this.status.challenges.narutodleClassic.result = resStr;
     this.status.challenges.narutodleClassic.isConfirmed = true;
@@ -217,9 +230,13 @@ export class AppComponent {
   narutodleJutsu(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.narutodleJutsu.isSuccess = true;
+    let threshold = 7;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.narutodleJutsu.isSuccess = true;
+    } else {
+      this.status.challenges.narutodleJutsu.isSuccess = false;
+    }
 
     this.status.challenges.narutodleJutsu.result = resStr;
     this.status.challenges.narutodleJutsu.isConfirmed = true;
@@ -228,20 +245,29 @@ export class AppComponent {
   narutodleEye(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.narutodleEye.isSuccess = true;
+    let threshold = 9;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.narutodleEye.isSuccess = true;
+    } else {
+      this.status.challenges.narutodleEye.isSuccess = false;
+    }
 
     this.status.challenges.narutodleEye.result = resStr;
     this.status.challenges.narutodleEye.isConfirmed = true;
     this.saveStatus();
   }
+
   pokedleClassic(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.pokedleClassic.isSuccess = true;
+    let threshold = 8;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.pokedleClassic.isSuccess = true;
+    } else {
+      this.status.challenges.pokedleClassic.isSuccess = false;
+    }
 
     this.status.challenges.pokedleClassic.result = resStr;
     this.status.challenges.pokedleClassic.isConfirmed = true;
@@ -250,9 +276,13 @@ export class AppComponent {
   pokedleCard(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.pokedleCard.isSuccess = true;
+    let threshold = 5;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.pokedleCard.isSuccess = true;
+    } else {
+      this.status.challenges.pokedleCard.isSuccess = false;
+    }
 
     this.status.challenges.pokedleCard.result = resStr;
     this.status.challenges.pokedleCard.isConfirmed = true;
@@ -261,9 +291,13 @@ export class AppComponent {
   pokedleDescription(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.pokedleDescription.isSuccess = true;
+    let threshold = 9;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.pokedleDescription.isSuccess = true;
+    } else {
+      this.status.challenges.pokedleDescription.isSuccess = false;
+    }
 
     this.status.challenges.pokedleDescription.result = resStr;
     this.status.challenges.pokedleDescription.isConfirmed = true;
@@ -272,9 +306,13 @@ export class AppComponent {
   pokedleImage(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.pokedleImage.isSuccess = true;
+    let threshold = 7;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.pokedleImage.isSuccess = true;
+    } else {
+      this.status.challenges.pokedleImage.isSuccess = false;
+    }
 
     this.status.challenges.pokedleImage.result = resStr;
     this.status.challenges.pokedleImage.isConfirmed = true;
@@ -283,9 +321,13 @@ export class AppComponent {
   globleClassic(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.globleClassic.isSuccess = true;
+    let threshold = 11;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.globleClassic.isSuccess = true;
+    } else {
+      this.status.challenges.globleClassic.isSuccess = false;
+    }
 
     this.status.challenges.globleClassic.result = resStr;
     this.status.challenges.globleClassic.isConfirmed = true;
@@ -294,15 +336,24 @@ export class AppComponent {
   globleShape(res: string) {
     let resNumber = parseFloat(res);
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.globleShape.isSuccess = true;
+    let threshold = 9;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    if (resNumber <= threshold) {
+      this.status.challenges.globleShape.isSuccess = true;
+    } else {
+      this.status.challenges.globleShape.isSuccess = false;
+    }
 
     this.status.challenges.globleShape.result = resStr;
     this.status.challenges.globleShape.isConfirmed = true;
     this.saveStatus();
   }
   flags(flags: string[]) {
+    if (flags.findIndex((x) => !x) !== -1) {
+      console.log('Invalid');
+      return;
+    }
+
     let resStr = `Inseriti: ${flags.join(',')}.`;
 
     this.status.challenges.flags.isSuccess = true;
@@ -312,26 +363,34 @@ export class AppComponent {
     this.saveStatus();
   }
 
-  songs(res: string) {
-    let resNumber = parseFloat(res);
+  songs(songs: string[]) {
+    if (songs.findIndex((x) => !x) !== -1) {
+      console.log('Invalid');
+      return;
+    }
 
-    let resStr = `Inseriti: ${resNumber}.`;
+    // let resStr = `Inseriti: ${resNumber}.`;
 
     this.status.challenges.songs.isSuccess = true;
 
-    this.status.challenges.songs.result = resStr;
+    // this.status.challenges.songs.result = resStr;
     this.status.challenges.songs.isConfirmed = true;
     this.saveStatus();
   }
 
-  animeSongs(res: string) {
-    let resNumber = parseFloat(res);
+  animeSongs(animes: string[]) {
 
-    let resStr = `Inseriti: ${resNumber}.`;
+        if (animes.findIndex((x) => !x) !== -1) {
+      console.log('Invalid');
+      return;
+    }
+    // let resNumber = parseFloat(res);
+
+    // let resStr = `Inseriti: ${resNumber}.`;
 
     this.status.challenges.animeSongs.isSuccess = true;
 
-    this.status.challenges.animeSongs.result = resStr;
+    // this.status.challenges.animeSongs.result = resStr;
     this.status.challenges.animeSongs.isConfirmed = true;
     this.saveStatus();
   }
@@ -368,12 +427,29 @@ export class AppComponent {
     this.saveStatus();
   }
 
+  private currentAudioPlayingKey: string = '';
   playAudio(key: keyof typeof this.soundMap) {
     const audio = this.soundMap[key];
-    if (audio) {
-      audio.currentTime = 0;
-      audio.play();
+    if (!audio) return;
+
+    // se sto riproducendo
+    if (!audio.paused && !audio.ended) {
+      audio.pause();
+      return;
     }
+
+    if (this.currentAudioPlayingKey && this.currentAudioPlayingKey != key) {
+      let currentAudio = this.soundMap[this.currentAudioPlayingKey];
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    // Object.values(this.soundMap).forEach((a) => {
+    //   a.pause();
+    //   a.currentTime = 0;
+    // });
+    this.currentAudioPlayingKey = key;
+    audio.play();
   }
 }
 
