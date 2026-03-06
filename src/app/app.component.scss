@@ -20,12 +20,14 @@
   &.animate {
     .input-name-form-container {
       opacity: 0;
-      height: 0;
+      position: absolute;
+      //z-index: -1;
+      //top: -1000px;
     }
 
     .logo {
       animation: logoSequence 8s ease forwards;
-      animation-delay: 2s;
+      animation-delay: 1s;
     }
 
     @keyframes logoSequence {
@@ -64,7 +66,9 @@
 
     .first-phase-result {
       animation: textFadeIn 2s ease forwards;
-      animation-delay: 10s;
+      animation-delay: 9s;
+      display: block;
+      margin-top: 300px;
     }
 
     @keyframes textFadeIn {
@@ -126,6 +130,7 @@
     text-align: center;
     font-weight: bold;
     opacity: 0;
+    display: none;
 
     .continue-button {
       padding: 20px 50px;

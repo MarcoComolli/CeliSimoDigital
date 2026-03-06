@@ -15,14 +15,23 @@ export class AppComponent {
   public username: string = '';
   public response: string = 'Ciao! Come prima cosa, inserisci il tuo nome:';
 
-  public stringaDaCancellare: string = "wooo"
-
   private instruction_base: string = 'Forza, inserisci il tuo nome:';
   private instruction: string = '';
   public status: Status = new Status();
   private statusKey: string = 'celi-status-key';
 
   public isCssAnimating = false;
+
+  public chipTunes = [
+    { n: 'giova', v: '' },
+    { n: 'pit', v: '' },
+    { n: 'michel', v: '' },
+    { n: 'pavel', v: '' },
+    { n: 'dze', v: '' },
+    { n: 'marco', v: '' },
+    { n: 'giova', v: '' },
+    { n: 'giova', v: '' },
+  ];
 
   public openAccordionIndex: number | null = null;
 
@@ -34,6 +43,30 @@ export class AppComponent {
     prova: new Audio('audio/prova.mp3'),
     questa: new Audio('audio/questa.mp3'),
     soluzione: new Audio('audio/soluzione.mp3'),
+    marco: new Audio('audio/chip/mar.mp3'),
+    pavel: new Audio('audio/chip/pav.mp3'),
+    giova: new Audio('audio/chip/gio.mp3'),
+    pit: new Audio('audio/chip/pit.mp3'),
+    michel: new Audio('audio/chip/mic.mp3'),
+    dze: new Audio('audio/chip/dze.mp3'),
+    amon: new Audio('audio/sarab/amon.mp3'),
+    eroe: new Audio('audio/sarab/eroe.mp3'),
+    linkin: new Audio('audio/sarab/linkin.mp3'),
+    nexus: new Audio('audio/sarab/nexus.mp3'),
+    lotr: new Audio('audio/sarab/lotr.mp3'),
+    pressure: new Audio('audio/sarab/pressure.mp3'),
+    sabaton: new Audio('audio/sarab/sabaton.mp3'),
+    sandman: new Audio('audio/sarab/sandman.mp3'),
+    aot: new Audio('audio/sarab/aot.mp3'),
+    blackclover: new Audio('audio/anim/blackclover.mp3'),
+    deathnote: new Audio('audio/anim/deathnote.mp3'),
+    demonslayer: new Audio('audio/anim/demonslayer.mp3'),
+    dragonball: new Audio('audio/anim/dragonball.mp3'),
+    dungeonfood: new Audio('audio/anim/dungeonfood.mp3'),
+    ken: new Audio('audio/anim/ken.mp3'),
+    loghorizon: new Audio('audio/anim/loghorizon.mp3'),
+    mha: new Audio('audio/anim/mha.mp3'),
+    naruto: new Audio('audio/anim/naruto.mp3'),
   };
 
   constructor() {
@@ -131,13 +164,13 @@ export class AppComponent {
     //in chiusura
     if (this.openAccordionIndex !== index) {
       if (index === 2) {
-        this.playAudio('di');
+        this.playAudio('è');
       }
       if (index === 4) {
         this.playAudio('la');
       }
       if (index === 5) {
-        this.playAudio('è');
+        this.playAudio('di');
       }
       if (index === 7) {
         this.playAudio('questa');
@@ -154,12 +187,12 @@ export class AppComponent {
     }
   }
 
-  geoHunter(res: string, delta: string) {
+  geoHunter(res: string, target: string) {
     let resNumber = parseFloat(res);
-    let deltaNumber = parseFloat(delta);
+    let targetNumber = parseFloat(target);
 
-    let resStr = `Inseriti: ${resNumber} ${deltaNumber}.`;
-    if (resNumber > deltaNumber) {
+    let resStr = `Inseriti: ${resNumber} ${targetNumber}.`;
+    if (resNumber > targetNumber) {
       this.status.challenges.geoHunter.isSuccess = true;
     } else {
       this.status.challenges.geoHunter.isSuccess = false;
@@ -270,8 +303,7 @@ export class AppComponent {
     this.saveStatus();
   }
   flags(flags: string[]) {
-
-    let resStr = `Inseriti: ${flags.join(",")}.`;
+    let resStr = `Inseriti: ${flags.join(',')}.`;
 
     this.status.challenges.flags.isSuccess = true;
 
@@ -315,10 +347,8 @@ export class AppComponent {
     this.status.challenges.accordionsAudio.isConfirmed = true;
     this.saveStatus();
   }
-  voices(res: string) {
-    let resNumber = parseFloat(res);
-
-    let resStr = `Inseriti: ${resNumber}.`;
+  voices() {
+    let resStr = `Inseriti: ${this.chipTunes}.`;
 
     this.status.challenges.voices.isSuccess = true;
 

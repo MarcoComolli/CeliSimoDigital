@@ -7,10 +7,11 @@
       type="text"
       name="name-input"
       enterkeyhint="Conferma"
+      [disabled]="isCssAnimating"
       (keydown.enter)="onNameSubmit()"
       [(ngModel)]="username"
       (input)="this.status.enableUppercase ? username : (username = username.toLowerCase())" />
-    <button class="submit-name" (click)="onNameSubmit()">Invia</button>
+    <button class="submit-name" (click)="onNameSubmit()" [disabled]="isCssAnimating">Invia</button>
   </div>
 
   <div class="first-phase-result" *ngIf="this.status.phase === 0">
@@ -305,7 +306,8 @@
             <div class="challenge-expl">
               Sembra che gli accordions abbiano qualcosa da dire. Forse è il caso di
               <b>ascoltarli</b>
-              attentamente, in fondo, loro sanno la soluzione a questa prova...
+              attentamente quando timidamente si fanno piccoli piccoli. <br>
+              Beh, in fondo, loro sanno la soluzione a questa prova...
             </div>
             <input class="form-input" [disabled]="status.challenges.accordionsAudio.isConfirmed" type="text" #res name="res" min="1" placeholder="Il risultato è:" />
             <button class="confirm-btn" (click)="accordionsAudio(res.value)">Conferma</button>
@@ -422,17 +424,17 @@
             <div class="challenge-expl">
               Alcune persone che conosci ti hanno lasciato dei messaggi. La voce e' stata modificata, associa la persona dalla dropdown all'audio riprodotto
             </div>
-            <div *ngFor="let item of [1, 2, 3, 4]; let i = index" class="voice-row">
-              <button class="toggle-audio-btn" (click)="playAudio('')">Play</button>
+            <div *ngFor="let tune of chipTunes; let i = index" class="voice-row">
+              <button class="toggle-audio-btn" (click)="playAudio(tune.n)">Play</button>
 
-              <select class="dropdown" [disabled]="status.challenges.voices.isConfirmed" [(ngModel)]="stringaDaCancellare">
+              <select class="dropdown" [disabled]="status.challenges.voices.isConfirmed" [(ngModel)]="tune.v">
                 <option class="ddown-opt" value="" disabled selected></option>
-                <option class="ddown-opt" value="1">Opzione 1</option>
-                <option class="ddown-opt" value="2">Opzione 2</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
+                <option class="ddown-opt" value="1">Michel</option>
+                <option class="ddown-opt" value="2">Pit</option>
+                <option class="ddown-opt" value="3">Marcone</option>
+                <option class="ddown-opt" value="3">Pavel</option>
+                <option class="ddown-opt" value="3">Dze</option>
+                <option class="ddown-opt" value="3">Giova</option>
                 <option class="ddown-opt" value="3">Opzione 3</option>
                 <option class="ddown-opt" value="3">Opzione 3</option>
                 <option class="ddown-opt" value="3">Opzione 3</option>
@@ -441,7 +443,7 @@
 
               <!-- <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" /> -->
             </div>
-            <button class="confirm-btn" (click)="voices(res.value)">Conferma</button>
+            <button class="confirm-btn" (click)="voices()">Conferma</button>
             <div class="challenge-result">{{ status.challenges.voices.result }}</div>
           </div>
         </div>
