@@ -22,14 +22,12 @@ export class AppComponent {
   public isCssAnimating = false;
 
   public chipTunes = [
-    { n: 'giova', v: '' },
-    { n: 'pit', v: '' },
-    { n: 'michel', v: '' },
-    { n: 'pavel', v: '' },
-    { n: 'dze', v: '' },
-    { n: 'marco', v: '' },
-    { n: 'giova', v: '' },
-    { n: 'giova', v: '' },
+    { expected: 'giova', v: '' },
+    { expected: 'pit', v: '' },
+    { expected: 'michel', v: '' },
+    { expected: 'pavel', v: '' },
+    { expected: 'dze', v: '' },
+    { expected: 'marco', v: '' },
   ];
 
   public openAccordionIndex: number | null = null;
@@ -353,10 +351,33 @@ export class AppComponent {
       console.log('Invalid');
       return;
     }
+    let threshold = 7;
+    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
-    let resStr = `Inseriti: ${flags.join(',')}.`;
+    var expected: string[] = ['Albania', 'Australia', 'Egitto', 'Marocco', 'Macedonia del Nord', 'Nigeria', 'Nepal', 'Arabia Saudita', 'Svezia'];
+    var valid: boolean[] = [
+      this.transform(flags[0]).includes('albania'),
+      this.transform(flags[1]).includes('australia'),
+      this.transform(flags[2]).includes('egitto'),
+      this.transform(flags[3]).includes('marocco'),
+      this.transform(flags[4]).includes('macedonia'),
+      this.transform(flags[5]).includes('nigeria'),
+      this.transform(flags[6]).includes('nepal'),
+      this.transform(flags[7]).includes('arabia'),
+      this.transform(flags[8]).includes('svezia'),
+    ];
 
-    this.status.challenges.flags.isSuccess = true;
+    for (let i = 0; i < flags.length; i++) {
+      const inp = flags[i];
+      resStr += `I:[${inp}] - S:[${expected[i]}] >> `;
+      if (valid[i]) {
+        resStr += '✅<br>';
+      } else {
+        resStr += '❌<br>';
+      }
+    }
+
+    this.status.challenges.flags.isSuccess = valid.filter((x) => x).length >= threshold;
 
     this.status.challenges.flags.result = resStr;
     this.status.challenges.flags.isConfirmed = true;
@@ -369,52 +390,131 @@ export class AppComponent {
       return;
     }
 
-    // let resStr = `Inseriti: ${resNumber}.`;
+    let threshold = 7;
+    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
-    this.status.challenges.songs.isSuccess = true;
+    var expected: string[] = ['Castle of Glass', 'Amon Amarth', "Un'ode per l'eroe", 'Under pressure', 'Enter sandman', 'Howard Shore', 'The last stand', 'Amaranthe', 'In Flames'];
+    var valid: boolean[] = [
+      this.transform(songs[0]).includes('castle') && this.transform(songs[0]).includes('glass'),
+      this.transform(songs[1]).includes('amonamart'),
+      (this.transform(songs[2]).includes('ode') && this.transform(songs[2]).includes('eroe')) || this.transform(songs[2]).includes('magicsigns'),
+      this.transform(songs[3]).includes('underpressure'),
+      this.transform(songs[4]).includes('enter') && this.transform(songs[4]).includes('sandman'),
+      this.transform(songs[5]).includes('shore'),
+      this.transform(songs[6]).includes('laststand'),
+      this.transform(songs[7]).includes('amaranthe'),
+      this.transform(songs[8]).includes('inflames'),
+    ];
 
-    // this.status.challenges.songs.result = resStr;
+    for (let i = 0; i < songs.length; i++) {
+      const inp = songs[i];
+      resStr += `I:[${inp}] - S:[${expected[i]}] >> `;
+      if (valid[i]) {
+        resStr += '✅<br>';
+      } else {
+        resStr += '❌<br>';
+      }
+    }
+
+    this.status.challenges.songs.isSuccess = valid.filter((x) => x).length >= threshold;
+
+    this.status.challenges.songs.result = resStr;
+
     this.status.challenges.songs.isConfirmed = true;
     this.saveStatus();
   }
 
   animeSongs(animes: string[]) {
-
-        if (animes.findIndex((x) => !x) !== -1) {
+    if (animes.findIndex((x) => !x) !== -1) {
       console.log('Invalid');
       return;
     }
-    // let resNumber = parseFloat(res);
 
-    // let resStr = `Inseriti: ${resNumber}.`;
+    let threshold = 8;
+    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
-    this.status.challenges.animeSongs.isSuccess = true;
+    var expected: string[] = [
+      'Death Note',
+      'Attack on Titan',
+      'Black Clover',
+      'Demon Slayer',
+      'Dungeon Food',
+      'Ken il guerriero',
+      'Log Horizon',
+      'Dragonball',
+      'Naruto: Shippuden',
+      'My Hero Academia',
+    ];
+    var valid: boolean[] = [
+      this.transform(animes[0]).includes('deathnote'),
+      this.transform(animes[1]).includes('attackontitan') || this.transform(animes[1]).includes('attaccodeigiganti') || this.transform(animes[1]).includes('shingeki no kyojin'),
+      this.transform(animes[2]).includes('blackclover'),
+      this.transform(animes[3]).includes('demonslayer') || this.transform(animes[3]).includes('kimetsunoyaiba'),
+      (this.transform(animes[4]).includes('dungeon') && this.transform(animes[4]).includes('food')) || this.transform(animes[4]).includes('dungeonmeshi'),
+      this.transform(animes[5]).includes('ken') && (this.transform(animes[5]).includes('guerriero') || this.transform(animes[5]).includes('hokuto')),
+      this.transform(animes[6]).includes('loghorizon'),
+      this.transform(animes[7]).includes('dragonball'),
+      this.transform(animes[8]).includes('naruto'),
+      this.transform(animes[9]).includes('myheroacademia'),
+    ];
 
-    // this.status.challenges.animeSongs.result = resStr;
+    for (let i = 0; i < animes.length; i++) {
+      const inp = animes[i];
+      resStr += `I:[${inp}] - S:[${expected[i]}] >> `;
+      if (valid[i]) {
+        resStr += '✅<br>';
+      } else {
+        resStr += '❌<br>';
+      }
+    }
+
+    this.status.challenges.animeSongs.isSuccess = valid.filter((x) => x).length >= threshold;
+
+    this.status.challenges.animeSongs.result = resStr;
     this.status.challenges.animeSongs.isConfirmed = true;
     this.saveStatus();
   }
 
   accordionsAudio(res: string) {
-    let resNumber = parseFloat(res);
+    let resStr = `Inserito: ${res}. Soluzione: BANANA`;
 
-    let resStr = `Inseriti: ${resNumber}.`;
-
-    this.status.challenges.accordionsAudio.isSuccess = true;
+    this.status.challenges.accordionsAudio.isSuccess = this.transform(res) === 'banana';
 
     this.status.challenges.accordionsAudio.result = resStr;
     this.status.challenges.accordionsAudio.isConfirmed = true;
     this.saveStatus();
   }
-  voices() {
-    let resStr = `Inseriti: ${this.chipTunes}.`;
 
-    this.status.challenges.voices.isSuccess = true;
+  voices() {
+    var validation = 0;
+    Object.values(this.chipTunes).forEach((v) => {
+      if (!v.v) validation++;
+    });
+
+    if (validation > 0) return;
+    let threshold = 5;
+    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
+
+    var validAnswers = 0;
+
+    Object.values(this.chipTunes).forEach((value) => {
+      resStr += `I:[${value.v}] - S:[${value.expected}] >> `;
+      if (value.v == value.expected) {
+        validAnswers++;
+        resStr += '✅<br>';
+      } else {
+        resStr += '❌<br>';
+      }
+    });
+
+    this.status.challenges.voices.isSuccess = validAnswers >= threshold;
 
     this.status.challenges.voices.result = resStr;
+
     this.status.challenges.voices.isConfirmed = true;
     this.saveStatus();
   }
+
   rickRoll(res: string) {
     let resNumber = parseFloat(res);
 
@@ -450,6 +550,12 @@ export class AppComponent {
     // });
     this.currentAudioPlayingKey = key;
     audio.play();
+  }
+
+  private transform(input: string): string {
+    if (!input) return '';
+    var res = input.toLowerCase().trim().replaceAll(' ', '');
+    return res;
   }
 }
 

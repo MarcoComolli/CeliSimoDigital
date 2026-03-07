@@ -232,7 +232,7 @@
             </div>
             <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #a9 name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="globleShape(a9.value)">Conferma</button>
-            <div class="challenge-result">{{ status.challenges.globleShape.result }}</div>
+            <div class="challenge-result" >{{ status.challenges.globleShape.result }}</div>
           </div>
         </div>
       </div>
@@ -248,7 +248,7 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 10">
           <div class="content" [class.confirmed]="status.challenges.flags.isConfirmed">
-            <div class="challenge-expl">A quale stato appartengono le seguenti bandiere? Scrivi in tutte le caselle di testo e solo infine premi su conferma</div>
+            <div class="challenge-expl">A quale stato appartengono le seguenti bandiere? Scrivi in tutte le caselle di testo (in italiano) e solo infine premi su conferma</div>
             <div class="flag-row">
               <img class="flag" src="img\flags\al.webp" />
               <input class="form-input" [disabled]="status.challenges.flags.isConfirmed" type="text" #alb name="res" />
@@ -287,7 +287,7 @@
             </div>
 
             <button class="confirm-btn" (click)="flags([alb.value, aus.value, egy.value, mar.value, mac.value, nig.value, nep.value, ara.value, sve.value])">Conferma</button>
-            <div class="challenge-result">{{ status.challenges.flags.result }}</div>
+            <div class="challenge-result" [innerHTML]="status.challenges.flags.result"></div>
           </div>
         </div>
       </div>
@@ -367,7 +367,7 @@
             </div>
 
             <button class="confirm-btn" (click)="songs([c1.value,c2.value ,c3.value ,c4.value ,c5.value ,c6.value ,c7.value ,c8.value ,c9.value ,])">Conferma</button>
-            <div class="challenge-result">{{ status.challenges.songs.result }}</div>
+            <div class="challenge-result" [innerHTML]="status.challenges.songs.result"></div>
           </div>
         </div>
       </div>
@@ -430,7 +430,7 @@
             </div>
 
             <button class="confirm-btn" (click)="animeSongs([d1.value,d2.value,d3.value,d4.value,d5.value,d6.value,d7.value,d8.value,d9.value,d10.value,])">Conferma</button>
-            <div class="challenge-result">{{ status.challenges.animeSongs.result }}</div>
+            <div class="challenge-result" [innerHTML]="status.challenges.animeSongs.result"></div>
           </div>
         </div>
       </div>
@@ -450,7 +450,7 @@
               Alcune persone che conosci ti hanno lasciato dei messaggi. La voce e' stata modificata, associa la persona dalla dropdown all'audio riprodotto
             </div>
             <div *ngFor="let tune of chipTunes; let i = index" class="voice-row">
-              <button class="toggle-audio-btn" (click)="playAudio(tune.n)">Play</button>
+              <button class="toggle-audio-btn" (click)="playAudio(tune.expected)">Play</button>
 
               <select class="dropdown" [disabled]="status.challenges.voices.isConfirmed" [(ngModel)]="tune.v">
                 <option class="ddown-opt" value="" disabled selected></option>
@@ -460,16 +460,10 @@
                 <option class="ddown-opt" value="3">Pavel</option>
                 <option class="ddown-opt" value="3">Dze</option>
                 <option class="ddown-opt" value="3">Giova</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
-                <option class="ddown-opt" value="3">Opzione 3</option>
               </select>
-
-              <!-- <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #a name="res" placeholder="Titolo" /> -->
             </div>
             <button class="confirm-btn" (click)="voices()">Conferma</button>
-            <div class="challenge-result">{{ status.challenges.voices.result }}</div>
+            <div class="challenge-result" [innerHTML]="status.challenges.voices.result"></div>
           </div>
         </div>
       </div>
