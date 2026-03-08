@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Status } from '../models';
+import { ProvaBase, Status } from '../models';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -24,10 +24,11 @@ export class AppComponent {
   public chipTunes = [
     { expected: 'giova', v: '' },
     { expected: 'pit', v: '' },
+    { expected: 'gloria', v: '' },
     { expected: 'michel', v: '' },
     { expected: 'pavel', v: '' },
     { expected: 'dze', v: '' },
-    { expected: 'marco', v: '' },
+    { expected: 'marcone', v: '' },
   ];
 
   public openAccordionIndex: number | null = null;
@@ -41,12 +42,13 @@ export class AppComponent {
     questa: new Audio('audio/questa.mp3'),
     soluzione: new Audio('audio/soluzione.mp3'),
     //voices
-    marco: new Audio('audio/chip/mar.mp3'),
+    marcone: new Audio('audio/chip/mar.mp3'),
     pavel: new Audio('audio/chip/pav.mp3'),
     giova: new Audio('audio/chip/gio.mp3'),
     pit: new Audio('audio/chip/pit.mp3'),
     michel: new Audio('audio/chip/mic.mp3'),
     dze: new Audio('audio/chip/dze.mp3'),
+    gloria: new Audio('audio/chip/glo.mp3'),
     //band
     amon: new Audio('audio/sarab/amon.mp3'),
     eroe: new Audio('audio/sarab/eroe.mp3'),
@@ -74,10 +76,7 @@ export class AppComponent {
     var storageItem = localStorage.getItem(this.statusKey);
     if (!storageItem) return;
     this.status = JSON.parse(storageItem);
-
-    //load audios
-
-    this.status = new Status(); //TODO: cancella qui, solo x test
+    // this.status = new Status(); //TODO: cancella qui, solo x test
   }
 
   public onNameSubmit() {
@@ -111,6 +110,12 @@ export class AppComponent {
     if (insertedInput.trim().startsWith('simone')) {
       this.status.enableUppercase = true;
       this.response = `Oh suvvia, <span class="highlight2">${insertedInput}</span>, con la minuscola iniziale? Dai, puoi sforzarti di più..<br>${this.instruction}`;
+      this.saveStatus();
+      return;
+    }
+
+    if (insertedInput.trim().includes('pecore')) {
+      this.response = `<span class="highlight2">${insertedInput}</span> ahahah. Quanti ricordi su Catan, buon tentativo vero, ma comunque sbagliato. <br>${this.instruction}`;
       this.saveStatus();
       return;
     }
@@ -158,6 +163,7 @@ export class AppComponent {
   public onPhase0End() {
     this.status.phase = 1;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   toggleAccordion(index: number): void {
@@ -189,6 +195,7 @@ export class AppComponent {
   }
 
   geoHunter(res: string, target: string) {
+    if(!res || !target) return;
     let resNumber = parseFloat(res);
     let targetNumber = parseFloat(target);
 
@@ -207,9 +214,11 @@ export class AppComponent {
     this.status.challenges.geoHunter.result = resStr;
     this.status.challenges.geoHunter.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   narutodleClassic(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 10;
@@ -223,9 +232,11 @@ export class AppComponent {
     this.status.challenges.narutodleClassic.result = resStr;
     this.status.challenges.narutodleClassic.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   narutodleJutsu(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 7;
@@ -239,8 +250,11 @@ export class AppComponent {
     this.status.challenges.narutodleJutsu.result = resStr;
     this.status.challenges.narutodleJutsu.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
+
   narutodleEye(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
@@ -254,9 +268,11 @@ export class AppComponent {
     this.status.challenges.narutodleEye.result = resStr;
     this.status.challenges.narutodleEye.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   pokedleClassic(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 8;
@@ -270,8 +286,11 @@ export class AppComponent {
     this.status.challenges.pokedleClassic.result = resStr;
     this.status.challenges.pokedleClassic.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
+
   pokedleCard(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 5;
@@ -285,8 +304,11 @@ export class AppComponent {
     this.status.challenges.pokedleCard.result = resStr;
     this.status.challenges.pokedleCard.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
+
   pokedleDescription(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
@@ -300,8 +322,11 @@ export class AppComponent {
     this.status.challenges.pokedleDescription.result = resStr;
     this.status.challenges.pokedleDescription.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
+
   pokedleImage(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 7;
@@ -315,8 +340,11 @@ export class AppComponent {
     this.status.challenges.pokedleImage.result = resStr;
     this.status.challenges.pokedleImage.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
+
   globleClassic(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 11;
@@ -330,8 +358,10 @@ export class AppComponent {
     this.status.challenges.globleClassic.result = resStr;
     this.status.challenges.globleClassic.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
   globleShape(res: string) {
+    if(!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
@@ -345,6 +375,7 @@ export class AppComponent {
     this.status.challenges.globleShape.result = resStr;
     this.status.challenges.globleShape.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
   flags(flags: string[]) {
     if (flags.findIndex((x) => !x) !== -1) {
@@ -382,6 +413,7 @@ export class AppComponent {
     this.status.challenges.flags.result = resStr;
     this.status.challenges.flags.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   songs(songs: string[]) {
@@ -422,6 +454,7 @@ export class AppComponent {
 
     this.status.challenges.songs.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   animeSongs(animes: string[]) {
@@ -473,9 +506,11 @@ export class AppComponent {
     this.status.challenges.animeSongs.result = resStr;
     this.status.challenges.animeSongs.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   accordionsAudio(res: string) {
+    if(!res) return;
     let resStr = `Inserito: ${res}. Soluzione: BANANA`;
 
     this.status.challenges.accordionsAudio.isSuccess = this.transform(res) === 'banana';
@@ -483,6 +518,7 @@ export class AppComponent {
     this.status.challenges.accordionsAudio.result = resStr;
     this.status.challenges.accordionsAudio.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
   voices() {
@@ -513,17 +549,44 @@ export class AppComponent {
 
     this.status.challenges.voices.isConfirmed = true;
     this.saveStatus();
+    this.checkPhase1Completion();
   }
 
-  rickRoll(res: string) {
-    let resNumber = parseFloat(res);
+  rickrolled() {
+    setTimeout(() => {
+      this.status.challenges.rickRoll.isSuccess = true;
 
-    let resStr = `Inseriti: ${resNumber}.`;
+      this.status.challenges.rickRoll.result = 'Sei stato Rickrollato! Questo ti da un punto bonus a prescindere.';
+      this.status.challenges.rickRoll.isConfirmed = true;
+      this.saveStatus();
+      this.checkPhase1Completion();
+    }, 1000);
+  }
 
-    this.status.challenges.rickRoll.isSuccess = true;
+  private checkPhase1Completion() {
+    var result = 0;
 
-    this.status.challenges.rickRoll.result = resStr;
-    this.status.challenges.rickRoll.isConfirmed = true;
+    for (const value of Object.values(this.status.challenges)) {
+
+      if (!value.isConfirmed) {
+        return;
+      }
+      if (value.isSuccess) {
+        result++;
+      }
+    }
+
+    if( this.status.loginRequiredTries - this.status.loginTry >= 0) {
+      result++;
+    }
+    this.status.totalResult = result;
+
+    this.status.phase = 2;
+
+  }
+
+  public phase3() {
+    this.status.phase = 3;
     this.saveStatus();
   }
 
@@ -544,10 +607,6 @@ export class AppComponent {
       currentAudio.currentTime = 0;
     }
 
-    // Object.values(this.soundMap).forEach((a) => {
-    //   a.pause();
-    //   a.currentTime = 0;
-    // });
     this.currentAudioPlayingKey = key;
     audio.play();
   }

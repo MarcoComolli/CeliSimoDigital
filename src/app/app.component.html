@@ -22,8 +22,8 @@
     <button *ngIf="this.status.phase === 0" class="continue-button" (click)="onPhase0End()">Continua</button>
   </div>
 
-  <div class="phase-1-container" *ngIf="this.status.phase === 1">
-    <div class="explanation">
+  <div class="phase-1-container" *ngIf="this.status.phase === 1 || this.status.phase === 3">
+    <div class="explanation" *ngIf="this.status.phase === 1">
       Continua ora la tua sfida digitale! Cerca di completare tutte le prove seguenti e vedi se alla fine sei riuscito a vincere una medaglia. Una volta confermate tutte le prove
       saprai il risultato!
       <i>(controlla bene prima di premere "conferma" in ogni prova perchè il risultato è definitivo e puoi tornare indietro)</i>
@@ -232,7 +232,7 @@
             </div>
             <input class="form-input" [disabled]="status.challenges.globleShape.isConfirmed" type="number" #a9 name="res" min="1" placeholder="Numero di tentativi" />
             <button class="confirm-btn" (click)="globleShape(a9.value)">Conferma</button>
-            <div class="challenge-result" >{{ status.challenges.globleShape.result }}</div>
+            <div class="challenge-result">{{ status.challenges.globleShape.result }}</div>
           </div>
         </div>
       </div>
@@ -366,7 +366,7 @@
               <input class="form-input" [disabled]="status.challenges.songs.isConfirmed" type="text" #c9 name="res" placeholder="Nome band" />
             </div>
 
-            <button class="confirm-btn" (click)="songs([c1.value,c2.value ,c3.value ,c4.value ,c5.value ,c6.value ,c7.value ,c8.value ,c9.value ,])">Conferma</button>
+            <button class="confirm-btn" (click)="songs([c1.value, c2.value, c3.value, c4.value, c5.value, c6.value, c7.value, c8.value, c9.value])">Conferma</button>
             <div class="challenge-result" [innerHTML]="status.challenges.songs.result"></div>
           </div>
         </div>
@@ -429,7 +429,9 @@
               <input class="form-input" [disabled]="status.challenges.animeSongs.isConfirmed" type="text" #d10 name="res" placeholder="Nome anime" />
             </div>
 
-            <button class="confirm-btn" (click)="animeSongs([d1.value,d2.value,d3.value,d4.value,d5.value,d6.value,d7.value,d8.value,d9.value,d10.value,])">Conferma</button>
+            <button class="confirm-btn" (click)="animeSongs([d1.value, d2.value, d3.value, d4.value, d5.value, d6.value, d7.value, d8.value, d9.value, d10.value])">
+              Conferma
+            </button>
             <div class="challenge-result" [innerHTML]="status.challenges.animeSongs.result"></div>
           </div>
         </div>
@@ -454,12 +456,13 @@
 
               <select class="dropdown" [disabled]="status.challenges.voices.isConfirmed" [(ngModel)]="tune.v">
                 <option class="ddown-opt" value="" disabled selected></option>
-                <option class="ddown-opt" value="1">Michel</option>
-                <option class="ddown-opt" value="2">Pit</option>
-                <option class="ddown-opt" value="3">Marcone</option>
-                <option class="ddown-opt" value="3">Pavel</option>
-                <option class="ddown-opt" value="3">Dze</option>
-                <option class="ddown-opt" value="3">Giova</option>
+                <option class="ddown-opt" value="michel">Michel</option>
+                <option class="ddown-opt" value="pit">Pit</option>
+                <option class="ddown-opt" value="marcone">Marcone</option>
+                <option class="ddown-opt" value="pavel">Pavel</option>
+                <option class="ddown-opt" value="gloria">Gloria</option>
+                <option class="ddown-opt" value="dze">Dze</option>
+                <option class="ddown-opt" value="giova">Giova</option>
               </select>
             </div>
             <button class="confirm-btn" (click)="voices()">Conferma</button>
@@ -475,7 +478,7 @@
         </div>
         <div class="accordion-content" [class.open]="openAccordionIndex === 14">
           <div class="content" [class.confirmed]="status.challenges.rickRoll.isConfirmed">
-            <div><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">-- Vai alla sfida misteriosa --</a></div>
+            <div><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" (click)="rickrolled()">-- Vai alla sfida misteriosa --</a></div>
             <div class="challenge-expl">Questo...è un mistero...completa la sfida!</div>
             <button *ngIf="status.challenges.rickRoll.isConfirmed" class="confirm-btn">Conferma</button>
             <div class="challenge-result">{{ status.challenges.rickRoll.result }}</div>
@@ -484,5 +487,23 @@
       </div>
     </div>
   </div>
+  <div class="phase-2-container" *ngIf="this.status.phase >= 2">
+    Hai completato tutte le sfide!
+    <br />
+    Il tuo risultato finale si attesta a:
+    <br />
+    <span class="result">{{ this.status.totalResult }} / 16 sfide superate</span>
+    Questo ti ha permesso di vincere {{ this.status.totalResult >= 14 ? '2' : this.status.totalResult >= 7 ? '1' : '0' }} medaglie.
+
+    <div class="medallions-container" *ngIf="this.status.phase == 2">
+      <div class="medallion" [class.active]="this.status.totalResult >= 7">
+        <img src="img/lugia_logo_resized.png" alt="medaglia" />
+      </div>
+      <div class="medallion" [class.active]="this.status.totalResult >= 14">
+        <img src="img/lugia_logo_resized.png" alt="medaglia" />
+      </div>
+    </div>
+
+    <button *ngIf="this.status.phase === 2" class="next-btn" (click)="phase3()">Torna ai risultati delle sfide</button>
+  </div>
 </main>
-<!-- <router-outlet /> -->

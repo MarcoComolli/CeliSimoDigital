@@ -292,4 +292,78 @@
       }
     }
   }
+
+  .phase-2-container {
+    color: white;
+    padding: 16px;
+    font-weight: bold;
+    text-align: center;
+
+    .result {
+      color: rgb(68, 99, 235);
+      font-size: 1.5em;
+      display: flex;
+      padding: 4px;
+      margin: 8px;
+      justify-content: center;
+    }
+
+    .next-btn {
+      padding: 15px;
+      margin-top: 16px;
+    }
+
+    .medallions-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 16px;
+      .medallion {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 800px;
+
+        transform-style: preserve-3d;
+        box-shadow:
+          inset 0px 0px 4px 0px rgba(255, 255, 255, 0.6),
+          0px 0px 20px 2px rgb(214 204 204 / 67%);
+
+        img {
+          max-width: 70%;
+          max-height: 70%;
+          object-fit: contain;
+          filter: grayscale(100%);
+        }
+
+        &.active {
+          animation: medal-spin 7s infinite;
+          background: radial-gradient(circle at 30% 30%, #293d9b, #030a33);
+          border: 6px solid #5400b3;
+        }
+      }
+    }
+
+    @keyframes medal-spin {
+      /* rotazione nei primi 2 secondi */
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      40% {
+        transform: rotateY(360deg);
+      }
+
+      /* pausa fino a 5 secondi */
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  }
 }

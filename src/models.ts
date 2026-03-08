@@ -2,8 +2,9 @@ export class Status {
   public loginTry = 0;
   public loginRequiredTries = 10;
   public enableUppercase = false;
-  public phase = 1;
+  public phase = 0;
   public challenges = new Prove();
+  public totalResult = 0;
 
 }
 
@@ -26,7 +27,7 @@ export class Prove {
   rickRoll: ProvaBase = new ProvaBase();
 }
 
-class ProvaBase {
+export class ProvaBase {
   public isSuccess: boolean = false;
   public result = "";
   public isConfirmed: boolean = false;
