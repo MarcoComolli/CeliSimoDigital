@@ -24,11 +24,14 @@ export class AppComponent {
   public chipTunes = [
     { expected: 'giova', v: '' },
     { expected: 'pit', v: '' },
+    { expected: 'luca', v: '' },
     { expected: 'gloria', v: '' },
     { expected: 'michel', v: '' },
+    { expected: 'petto', v: '' },
     { expected: 'pavel', v: '' },
     { expected: 'dze', v: '' },
     { expected: 'marcone', v: '' },
+    { expected: 'gavio', v: '' },
   ];
 
   public openAccordionIndex: number | null = null;
@@ -49,6 +52,9 @@ export class AppComponent {
     michel: new Audio('audio/chip/mic.mp3'),
     dze: new Audio('audio/chip/dze.mp3'),
     gloria: new Audio('audio/chip/glo.mp3'),
+    gavio: new Audio('audio/chip/gav.mp3'),
+    luca: new Audio('audio/chip/luc.mp3'),
+    petto: new Audio('audio/chip/pet.mp3'),
     //band
     amon: new Audio('audio/sarab/amon.mp3'),
     eroe: new Audio('audio/sarab/eroe.mp3'),
@@ -145,6 +151,7 @@ export class AppComponent {
 
     if (toChecK === 'il tuo nome') {
       this.startCssAnimation();
+      this.saveStatus();
       return;
     }
 
@@ -195,7 +202,7 @@ export class AppComponent {
   }
 
   geoHunter(res: string, target: string) {
-    if(!res || !target) return;
+    if (!res || !target) return;
     let resNumber = parseFloat(res);
     let targetNumber = parseFloat(target);
 
@@ -210,7 +217,7 @@ export class AppComponent {
     } else {
       this.status.challenges.geoHunter.isSuccess = false;
     }
-    let resStr = `Inseriti: result: ${resNumber}, target: ${targetNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inseriti: result: ${resNumber}, target: ${targetNumber}. Necessari per vincere ≤ di ${threshold}`;
     this.status.challenges.geoHunter.result = resStr;
     this.status.challenges.geoHunter.isConfirmed = true;
     this.saveStatus();
@@ -218,11 +225,11 @@ export class AppComponent {
   }
 
   narutodleClassic(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 10;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.narutodleClassic.isSuccess = true;
     } else {
@@ -236,11 +243,11 @@ export class AppComponent {
   }
 
   narutodleJutsu(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 7;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.narutodleJutsu.isSuccess = true;
     } else {
@@ -254,11 +261,11 @@ export class AppComponent {
   }
 
   narutodleEye(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.narutodleEye.isSuccess = true;
     } else {
@@ -272,11 +279,11 @@ export class AppComponent {
   }
 
   pokedleClassic(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 8;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.pokedleClassic.isSuccess = true;
     } else {
@@ -290,11 +297,11 @@ export class AppComponent {
   }
 
   pokedleCard(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 5;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.pokedleCard.isSuccess = true;
     } else {
@@ -308,11 +315,11 @@ export class AppComponent {
   }
 
   pokedleDescription(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.pokedleDescription.isSuccess = true;
     } else {
@@ -326,11 +333,11 @@ export class AppComponent {
   }
 
   pokedleImage(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 7;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.pokedleImage.isSuccess = true;
     } else {
@@ -344,11 +351,11 @@ export class AppComponent {
   }
 
   globleClassic(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 11;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.globleClassic.isSuccess = true;
     } else {
@@ -361,11 +368,11 @@ export class AppComponent {
     this.checkPhase1Completion();
   }
   globleShape(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resNumber = parseFloat(res);
 
     let threshold = 9;
-    let resStr = `Inserito: ${resNumber}. Necessari per vincere < di ${threshold}`;
+    let resStr = `Inserito: ${resNumber}. Necessari per vincere ≤ di ${threshold}`;
     if (resNumber <= threshold) {
       this.status.challenges.globleShape.isSuccess = true;
     } else {
@@ -383,7 +390,7 @@ export class AppComponent {
       return;
     }
     let threshold = 7;
-    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
+    let resStr = `Necessari per passare la prova: almeno ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
     var expected: string[] = ['Albania', 'Australia', 'Egitto', 'Marocco', 'Macedonia del Nord', 'Nigeria', 'Nepal', 'Arabia Saudita', 'Svezia'];
     var valid: boolean[] = [
@@ -423,7 +430,7 @@ export class AppComponent {
     }
 
     let threshold = 7;
-    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
+    let resStr = `Necessari per passare la prova: almeno ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
     var expected: string[] = ['Castle of Glass', 'Amon Amarth', "Un'ode per l'eroe", 'Under pressure', 'Enter sandman', 'Howard Shore', 'The last stand', 'Amaranthe', 'In Flames'];
     var valid: boolean[] = [
@@ -464,7 +471,7 @@ export class AppComponent {
     }
 
     let threshold = 8;
-    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
+    let resStr = `Necessari per passare la prova: almeno ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
     var expected: string[] = [
       'Death Note',
@@ -510,7 +517,7 @@ export class AppComponent {
   }
 
   accordionsAudio(res: string) {
-    if(!res) return;
+    if (!res) return;
     let resStr = `Inserito: ${res}. Soluzione: BANANA`;
 
     this.status.challenges.accordionsAudio.isSuccess = this.transform(res) === 'banana';
@@ -528,8 +535,8 @@ export class AppComponent {
     });
 
     if (validation > 0) return;
-    let threshold = 5;
-    let resStr = `Necessari per passare la prova: ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
+    let threshold = 8;
+    let resStr = `Necessari per passare la prova: almeno ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
     var validAnswers = 0;
 
@@ -567,7 +574,6 @@ export class AppComponent {
     var result = 0;
 
     for (const value of Object.values(this.status.challenges)) {
-
       if (!value.isConfirmed) {
         return;
       }
@@ -576,13 +582,12 @@ export class AppComponent {
       }
     }
 
-    if( this.status.loginRequiredTries - this.status.loginTry >= 0) {
+    if (this.status.loginRequiredTries - this.status.loginTry >= 0) {
       result++;
     }
     this.status.totalResult = result;
 
     this.status.phase = 2;
-
   }
 
   public phase3() {

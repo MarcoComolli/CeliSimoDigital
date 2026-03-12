@@ -459,10 +459,13 @@
                 <option class="ddown-opt" value="michel">Michel</option>
                 <option class="ddown-opt" value="pit">Pit</option>
                 <option class="ddown-opt" value="marcone">Marcone</option>
-                <option class="ddown-opt" value="pavel">Pavel</option>
+                <option class="ddown-opt" value="luca">Luca</option>
                 <option class="ddown-opt" value="gloria">Gloria</option>
                 <option class="ddown-opt" value="dze">Dze</option>
+                <option class="ddown-opt" value="gavio">Gavio</option>
                 <option class="ddown-opt" value="giova">Giova</option>
+                <option class="ddown-opt" value="pavel">Pavel</option>
+                <option class="ddown-opt" value="petto">Petto</option>
               </select>
             </div>
             <button class="confirm-btn" (click)="voices()">Conferma</button>
@@ -492,7 +495,7 @@
     <br />
     Il tuo risultato finale si attesta a:
     <br />
-    <span class="result">{{ this.status.totalResult }} / 16 sfide superate</span>
+    <span class="result">{{ this.status.totalResult }} / 17 sfide superate</span>
     Questo ti ha permesso di vincere {{ this.status.totalResult >= 14 ? '2' : this.status.totalResult >= 7 ? '1' : '0' }} medaglie.
 
     <div class="medallions-container" *ngIf="this.status.phase == 2">
