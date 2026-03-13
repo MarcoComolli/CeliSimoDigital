@@ -28,6 +28,7 @@ export class AppComponent {
     { expected: 'gloria', v: '' },
     { expected: 'michel', v: '' },
     { expected: 'petto', v: '' },
+    { expected: 'cri', v: '' },
     { expected: 'pavel', v: '' },
     { expected: 'dze', v: '' },
     { expected: 'marcone', v: '' },
@@ -55,6 +56,7 @@ export class AppComponent {
     gavio: new Audio('audio/chip/gav.mp3'),
     luca: new Audio('audio/chip/luc.mp3'),
     petto: new Audio('audio/chip/pet.mp3'),
+    cri: new Audio('audio/chip/cri.mp3'),
     //band
     amon: new Audio('audio/sarab/amon.mp3'),
     eroe: new Audio('audio/sarab/eroe.mp3'),
@@ -535,7 +537,7 @@ export class AppComponent {
     });
 
     if (validation > 0) return;
-    let threshold = 8;
+    let threshold = 9;
     let resStr = `Necessari per passare la prova: almeno ${threshold} corretti.<br>Risultato [input] - [soluzione]: <br>`;
 
     var validAnswers = 0;

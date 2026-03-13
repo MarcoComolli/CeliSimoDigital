@@ -455,7 +455,7 @@
               <button class="toggle-audio-btn" (click)="playAudio(tune.expected)">Play</button>
 
               <select class="dropdown" [disabled]="status.challenges.voices.isConfirmed" [(ngModel)]="tune.v">
-                <option class="ddown-opt" value="" disabled selected></option>
+                <!-- <option class="ddown-opt" value="" disabled selected></option> -->
                 <option class="ddown-opt" value="michel">Michel</option>
                 <option class="ddown-opt" value="pit">Pit</option>
                 <option class="ddown-opt" value="marcone">Marcone</option>
@@ -465,6 +465,7 @@
                 <option class="ddown-opt" value="gavio">Gavio</option>
                 <option class="ddown-opt" value="giova">Giova</option>
                 <option class="ddown-opt" value="pavel">Pavel</option>
+                <option class="ddown-opt" value="cri">Cri</option>
                 <option class="ddown-opt" value="petto">Petto</option>
               </select>
             </div>
